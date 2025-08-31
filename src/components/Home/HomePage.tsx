@@ -15,13 +15,17 @@ const HomePage: React.FC = () => {
           
           <FadeInSection delay={300}>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-              Passionné par l'automobile et la photographie depuis plus petit, je me spécialise dans la capture de l'essence et de la beauté des véhicules d'exception. Mon approche combine technique, précision et vision artistique pour créer des images qui racontent une histoire.
+              Passionné par le dessin, j’ai découvert il y a quelques années un véritable attrait pour la photographie.
+              Mon objectif, dans la photo automobile, est de capturer les instants uniques des voitures d’exception.
+              Lorsque je travaille avec un client, je cherche avant tout à mettre en valeur son véhicule et à lui offrir un souvenir mémorable à travers mes clichés.
+              La photographie me permet aussi de provoquer des rencontres et de partager cette passion autour de l’automobile. .
             </p>
           </FadeInSection>
           
           <FadeInSection delay={600}>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Des événements prestigieux aux séances sur mesure, chaque projet est une occasion de sublimer ces œuvres d'art automobiles. Mon portfolio reflète ma quête constante de l'image parfaite, où lumière, composition et émotion se rencontrent.
+              Je participe également à différents événements automobiles, comme le Prestige Auto de Beaune, des rassemblements ou encore des journées sur circuit, afin d’enrichir mon portfolio et partager cette passion.
+              En parallèle, je développe aussi d’autres thématiques photographiques : la street photography, les paysages et la photographie animalière, qui nourrissent mon regard et apportent une diversité à mon travail.
             </p>
           </FadeInSection>
         </div>
