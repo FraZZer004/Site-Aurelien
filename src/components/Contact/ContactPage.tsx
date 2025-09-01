@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { socialLinks, contactInfo } from '../../data/social';
 import SocialIcon from './SocialIcon';
 import FadeInSection from '../UI/FadeInSection';
@@ -32,12 +32,9 @@ const ContactPage: React.FC = () => {
                   <span>{contactInfo.email}</span>
                 </a>
                 
-                <a 
-                  href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
+                <a
                   className="flex items-center text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                 >
-                  <Phone className="mr-4" size={20} />
-                  <span>{contactInfo.phone}</span>
                 </a>
               </div>
             </div>
@@ -64,7 +61,7 @@ const ContactPage: React.FC = () => {
         <FadeInSection delay={500}>
           <div className="mt-24 text-center">
             <p className="text-gray-500 dark:text-gray-400">
-              © 2025 Aurélien Communeau - Photographe automobile
+              © 2025 Aurélien Communeau - Photographe
             </p>
           </div>
         </FadeInSection>

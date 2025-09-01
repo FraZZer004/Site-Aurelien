@@ -4,24 +4,11 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'instagram',
     platform: 'Instagram',
-    url: 'https://instagram.com/photographe',
+    url: 'https://www.instagram.com/aurel_photx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     icon: 'Instagram',
-  },
-  {
-    id: 'facebook',
-    platform: 'Facebook',
-    url: 'https://facebook.com/photographe',
-    icon: 'Facebook',
-  },
-  {
-    id: 'twitter',
-    platform: 'Twitter',
-    url: 'https://twitter.com/photographe',
-    icon: 'Twitter',
   },
 ];
 
 export const contactInfo = {
-  email: 'contact@photographe.com',
-  phone: '+33 6 12 34 56 78',
+  email: 'aurelien.communeau@orange.fr',
 };

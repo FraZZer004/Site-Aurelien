@@ -452,6 +452,7 @@ export const photos: Photo[] = [
     description: 'Prestige Auto 2025',
     title: 'Stand GMK',
   },
+    /*
   {
     id: 'pa-stand-gmk-9',
     categoryId: 'events',
@@ -465,7 +466,7 @@ export const photos: Photo[] = [
     mediaType: 'video',
     controls: true,
   },
-
+*/
 
   // Events - Prestige Auto 2024
   {
