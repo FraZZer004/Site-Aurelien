@@ -794,7 +794,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Logos/prenois2025.png',
     alt: 'Prestige Auto 2025',
     date: '06/06 - 08/06/2025',
-    description: 'Grand Prix de l\'Age d\'Or 2025',
+    description: 'Grand Prix de l\'Age d\'Or - 2025',
     title: 'Grand Prix de l\'Age d\'Or Prenois',
     isPreview: true
   },
@@ -918,10 +918,10 @@ export const photos: Photo[] = [
     categoryId: 'events',
     eventId: 'rallye-ouche',
     src: '/assets/images/Logos/Ouche.png',
-    alt: 'Rallye_bligny Sur Ouche - 2025',
+    alt: 'Rallye Bligny Sur Ouche - 2025',
     date: '09/05 - 10/05/2025',
-    description: 'Rallye_bligny Sur Ouche',
-    title: 'Rallye_bligny Sur Ouche - 2025',
+    description: 'Rallye Bligny Sur Ouche',
+    title: 'Rallye Bligny Sur Ouche - 2025',
     isPreview: true
   },
 
