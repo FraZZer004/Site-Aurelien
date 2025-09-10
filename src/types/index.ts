@@ -38,6 +38,7 @@ export interface Photo {
   shootingId?: string;
   artId?: string;
   drawingId?: string;
+  afficheId?: string;
   subEventId?: string;
   title?: string;
   isPreview?: boolean;

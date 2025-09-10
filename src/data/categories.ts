@@ -25,4 +25,10 @@ export const categories: PhotographyCategory[] = [
     description: 'Illustrations et dessins de véhicules',
     previewImage: 'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
   },
+  {
+    id: 'affiches',
+    name: 'Affiches',
+    description: 'Créations graphiques et affiches personnalisées',
+    previewImage: 'https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg',
+  },
 ];

@@ -31,6 +31,11 @@ export const menuItems: MenuItem[] = [
         label: 'Dessins',
         path: '/portfolio/drawings',
       },
+      {
+        id: 'affiches',
+        label: 'Affiches',
+        path: '/portfolio/affiches',
+      },
     ],
   },
   {

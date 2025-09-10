@@ -11,6 +11,8 @@ import ArtGalleryPage from './components/Portfolio/ArtGalleryPage';
 import ArtDetailPage from './components/Portfolio/ArtDetailPage';
 import DrawingGalleryPage from './components/Portfolio/DrawingGalleryPage';
 import DrawingDetailPage from './components/Portfolio/DrawingDetailPage';
+import AffichesGalleryPage from './components/Portfolio/AffichesGalleryPage';
+import AfficheDetailPage from './components/Portfolio/AfficheDetailPage';
 import { ThemeProvider } from './context/ThemeContext';
 
 
@@ -31,6 +33,8 @@ function App() {
               <Route path="/portfolio/art/:artId" element={<ArtDetailPage />} />
               <Route path="/portfolio/drawings" element={<DrawingGalleryPage />} />
               <Route path="/portfolio/drawings/:drawingId" element={<DrawingDetailPage />} />
+              <Route path="/portfolio/affiches" element={<AffichesGalleryPage />} />
+              <Route path="/portfolio/affiches/:afficheId" element={<AfficheDetailPage />} />
             </Routes>
           </Layout>
         </Router>
