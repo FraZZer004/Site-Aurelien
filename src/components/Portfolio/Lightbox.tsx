@@ -10,6 +10,12 @@ interface LightboxProps {
 }
 
 const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate }) => {
+  const [touchStart, setTouchStart] = React.useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = React.useState<number | null>(null);
+
+  // Minimum distance pour déclencher un swipe
+  const minSwipeDistance = 50;
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -26,6 +32,30 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
     };
   }, [onClose, onNavigate]);
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && hasNext) {
+      onNavigate('next');
+    }
+    if (isRightSwipe && hasPrev) {
+      onNavigate('prev');
+    }
+  };
+
   if (!photo) return null;
 
   const currentIndex = photos.findIndex(p => p.id === photo.id);
@@ -34,48 +64,89 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
 
   return (
       <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
-        <button
-            onClick={onClose}
-            className="absolute top-6 right-6 text-white p-2 hover:text-gray-300 transition-colors"
-            aria-label="Fermer"
+        <div
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
         >
-          <X size={28} />
-        </button>
+          <button
+              onClick={onClose}
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-white p-3 md:p-2 hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 rounded-full"
+              aria-label="Fermer"
+          >
+            <X size={24} className="md:w-7 md:h-7" />
+          </button>
 
-        {hasPrev && (
-            <button
-                onClick={() => onNavigate('prev')}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 hover:text-gray-300 transition-colors"
-                aria-label="Photo précédente"
-            >
-              <ChevronLeft size={40} />
-            </button>
-        )}
+          {hasPrev && (
+              <button
+                  onClick={() => onNavigate('prev')}
+                  className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white p-4 md:p-2 hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 rounded-full"
+                  aria-label="Photo précédente"
+              >
+                <ChevronLeft size={32} className="md:w-10 md:h-10" />
+              </button>
+          )}
 
-        {hasNext && (
-            <button
-                onClick={() => onNavigate('next')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 hover:text-gray-300 transition-colors"
-                aria-label="Photo suivante"
-            >
-              <ChevronRight size={40} />
-            </button>
-        )}
+          {hasNext && (
+              <button
+                  onClick={() => onNavigate('next')}
+                  className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white p-4 md:p-2 hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 rounded-full"
+                  aria-label="Photo suivante"
+              >
+                <ChevronRight size={32} className="md:w-10 md:h-10" />
+              </button>
+          )}
 
-        <div className="max-w-5xl max-h-[80vh] relative">
-          <img
-              src={photo.src}
-              alt={photo.alt}
-              className="max-h-[70vh] max-w-full object-contain"
-          />
+          {/* Zones de toucher invisibles pour mobile */}
+          {hasPrev && (
+              <div
+                  className="absolute left-0 top-0 w-1/3 h-full md:hidden z-5"
+                  onClick={() => onNavigate('prev')}
+                  aria-label="Zone tactile - Photo précédente"
+              />
+          )}
 
-          <div className="mt-4 text-white">
-            <p className="text-lg">{photo.alt}</p>
-            <div className="flex justify-between items-center mt-2 text-sm text-gray-300">
-              <span>{photo.date}</span>
-              <span>{photo.description}</span>
+          {hasNext && (
+              <div
+                  className="absolute right-0 top-0 w-1/3 h-full md:hidden z-5"
+                  onClick={() => onNavigate('next')}
+                  aria-label="Zone tactile - Photo suivante"
+              />
+          )}
+
+          <div className="max-w-5xl max-h-[80vh] relative">
+            <img
+                src={photo.src}
+                alt={photo.alt}
+                className="max-h-[70vh] max-w-full object-contain"
+            />
+
+            <div className="mt-4 text-white px-2">
+              <div className="flex justify-between items-center mt-2 text-sm text-gray-300">
+                <span>{photo.date}</span>
+                <span>{photo.description}</span>
+              </div>
+            </div>
+
+            {/* Indicateur de navigation sur mobile */}
+            <div className="flex justify-center mt-4 md:hidden">
+              <div className="flex space-x-2">
+                {photos.map((_, index) => (
+                    <div
+                        key={index}
+                        className={`w-2 h-2 rounded-full ${
+                            index === currentIndex ? 'bg-white' : 'bg-gray-500'
+                        }`}
+                    />
+                ))}
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Instructions de navigation sur mobile */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm opacity-70 md:hidden">
+          Glissez ou touchez les côtés pour naviguer
         </div>
       </div>
   );
