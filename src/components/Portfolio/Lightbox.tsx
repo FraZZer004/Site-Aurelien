@@ -12,9 +12,18 @@ interface LightboxProps {
 const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate }) => {
   const [touchStart, setTouchStart] = React.useState<number | null>(null);
   const [touchEnd, setTouchEnd] = React.useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   // Minimum distance pour déclencher un swipe
   const minSwipeDistance = 50;
+
+  // Mettre à jour l'index courant quand la photo change
+  React.useEffect(() => {
+    if (photo) {
+      const index = photos.findIndex(p => p.id === photo.id);
+      setCurrentIndex(index);
+    }
+  }, [photo, photos]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -58,9 +67,9 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
 
   if (!photo) return null;
 
-  const currentIndex = photos.findIndex(p => p.id === photo.id);
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex < photos.length - 1;
+  const isVideo = photo.src.match(/\.(mp4|mov|webm)$/i);
 
   return (
       <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
@@ -114,39 +123,57 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
               />
           )}
 
-          <div className="max-w-5xl max-h-[80vh] relative">
-            <img
-                src={photo.src}
-                alt={photo.alt}
-                className="max-h-[70vh] max-w-full object-contain"
-            />
+          <div className="w-full h-full flex items-center justify-center relative">
+            {isVideo ? (
+                <video
+                    src={photo.src}
+                    controls
+                    autoPlay={false}
+                    loop={photo.loop}
+                    muted={photo.muted}
+                    poster={photo.poster}
+                    playsInline
+                    className="max-h-[80vh] max-w-full object-contain mx-auto"
+                >
+                  Votre navigateur ne supporte pas la vidéo.
+                </video>
+            ) : (
+                <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="max-h-[80vh] max-w-full object-contain mx-auto block"
+                />
+            )}
+          </div>
 
+          {/* Informations de la photo/vidéo */}
+          <div className="absolute bottom-20 md:bottom-16 left-4 right-4 text-white text-center">
             <div className="mt-4 text-white px-2">
-              <div className="flex justify-between items-center mt-2 text-sm text-gray-300">
+              <div className="flex justify-between items-center text-sm text-gray-300">
                 <span>{photo.date}</span>
                 <span>{photo.description}</span>
               </div>
             </div>
+          </div>
 
-            {/* Indicateur de navigation sur mobile */}
-            <div className="flex justify-center mt-4 md:hidden">
-              <div className="flex space-x-2">
-                {photos.map((_, index) => (
-                    <div
-                        key={index}
-                        className={`w-2 h-2 rounded-full ${
-                            index === currentIndex ? 'bg-white' : 'bg-gray-500'
-                        }`}
-                    />
-                ))}
-              </div>
+          {/* Indicateur de navigation sur mobile */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex justify-center md:hidden">
+            <div className="flex space-x-2">
+              {photos.map((_, index) => (
+                  <div
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                          index === currentIndex ? 'bg-white' : 'bg-gray-500'
+                      }`}
+                  />
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Instructions de navigation sur mobile */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm opacity-70 md:hidden">
-          Glissez ou touchez les côtés pour naviguer
+          {/* Instructions de navigation sur mobile */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-white text-xs opacity-70 md:hidden text-center">
+            Glissez ou touchez les côtés pour naviguer
+          </div>
         </div>
       </div>
   );
