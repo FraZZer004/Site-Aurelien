@@ -2104,7 +2104,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4549-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2113,7 +2113,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4507-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2122,7 +2122,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4522-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2131,7 +2131,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4525.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2140,7 +2140,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4530-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2149,7 +2149,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4532-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2158,7 +2158,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4533.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2167,7 +2167,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4534-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2176,7 +2176,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4553-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2185,7 +2185,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4557-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2194,7 +2194,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4559-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2203,7 +2203,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4560-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2212,7 +2212,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4562-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
   {
     id: 'shooting4',
@@ -2221,7 +2221,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M4CompetRouge/IMG_4565.jpg',
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
-    description: '',
+    description: 'BMW M4 Competition',
   },
 
   // Shootings - BMW M335i
@@ -2233,7 +2233,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4621-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
   {
     id: 'shooting5',
@@ -2242,7 +2242,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4595.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
   {
     id: 'shooting5',
@@ -2251,7 +2251,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4609.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
   {
     id: 'shooting5',
@@ -2260,7 +2260,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4628.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
   {
     id: 'shooting5',
@@ -2269,7 +2269,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4645-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
   {
     id: 'shooting5',
@@ -2278,7 +2278,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4654.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
   {
     id: 'shooting5',
@@ -2287,7 +2287,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M335iNoir/IMG_4655.jpg',
     alt: 'BMW M335i',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M335i',
   },
 
   // Shootings - BMW M2 Competition
@@ -2299,7 +2299,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M2Compet/IMG_8040-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M2 Competition',
   },
   {
     id: 'shooting6',
@@ -2308,7 +2308,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M2Compet/IMG_8041-Avec_accentuation-Bruit.jpg',
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M2 Competition',
   },
   {
     id: 'shooting6',
@@ -2317,7 +2317,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M2Compet/IMG_8042.jpg',
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M2 Competition',
   },
   {
     id: 'shooting6',
@@ -2326,7 +2326,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M2Compet/IMG_8044.jpg',
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M2 Competition',
   },
   {
     id: 'shooting6',
@@ -2335,7 +2335,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M2Compet/IMG_8048.jpg',
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
-    description: '',
+    description: 'BMW M2 Competition',
   },
 
 // Shootings - Porsche GT3 RS
@@ -2347,7 +2347,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8199.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2356,7 +2356,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8198.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2365,7 +2365,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8182.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2374,7 +2374,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8181.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2383,7 +2383,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8165.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2392,7 +2392,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8161.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2401,7 +2401,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8160.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2410,7 +2410,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8159.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2419,7 +2419,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8156.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
   {
     id: 'shooting7',
@@ -2428,7 +2428,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GT3RS/IMG_8155.jpg',
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Porsche GT3 RS',
   },
 
 // Shootings - Volkswagen Golf GTI Édition Adidas
@@ -2438,9 +2438,9 @@ export const photos: Photo[] = [
     categoryId: 'shootings',
     shootingId: 'automobile',
     src: '/assets/images/Shooting_perso/GolfGTIAdidas/IMG_0649.jpg',
-    alt: 'Volkswagen Golf GTI Édition Adidas',
+    alt: 'Volkswagen Golf GTI "Édition Adidas"',
     date: '22/03/2024',
-    description: '',
+    description: 'Volkswagen Golf GTI',
   },
   {
     id: 'shooting8',
@@ -2449,7 +2449,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GolfGTIAdidas/IMG_0648.jpg',
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
-    description: '',
+    description: 'Volkswagen Golf GTI',
   },
   {
     id: 'shooting8',
@@ -2458,7 +2458,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GolfGTIAdidas/IMG_0611-Avec_accentuation-Bruit_-_Copie.jpg',
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
-    description: '',
+    description: 'Volkswagen Golf GTI',
   },
   {
     id: 'shooting8',
@@ -2467,7 +2467,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GolfGTIAdidas/IMG_0591-Avec_accentuation-Bruit_-_Copie.jpg',
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
-    description: '',
+    description: 'Volkswagen Golf GTI',
   },
   {
     id: 'shooting8',
@@ -2476,7 +2476,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GolfGTIAdidas/IMG_0645.jpg',
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
-    description: '',
+    description: 'Volkswagen Golf GTI',
   },
   {
     id: 'shooting8',
@@ -2485,7 +2485,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/GolfGTIAdidas/IMG_0588-Avec_accentuation-Bruit_-_Copie.jpg',
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
-    description: '',
+    description: 'Volkswagen Golf GTI',
   },
 
 // Shootings - Renault Clio RS
@@ -2497,7 +2497,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7638.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
   {
     id: 'shooting9',
@@ -2506,7 +2506,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7637.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
   {
     id: 'shooting9',
@@ -2515,7 +2515,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7645.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
   {
     id: 'shooting9',
@@ -2524,7 +2524,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7652.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
   {
     id: 'shooting9',
@@ -2533,7 +2533,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7663.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
   {
     id: 'shooting9',
@@ -2542,7 +2542,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7667.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
   {
     id: 'shooting9',
@@ -2551,7 +2551,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/ClioRSBlanche/IMG_7671.jpg',
     alt: 'Renault Clio RS',
     date: '22/03/2024',
-    description: '',
+    description: 'Renault Clio RS',
   },
 
 // Shootings - BMW 330ci + Nissan 350Z
@@ -2563,7 +2563,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1653.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2572,7 +2572,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1658.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2581,7 +2581,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1661.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2590,7 +2590,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1662.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2599,7 +2599,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1663.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2608,7 +2608,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1669.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2617,7 +2617,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1670.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2626,7 +2626,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1671.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2635,7 +2635,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1696.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2644,7 +2644,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1700.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2653,7 +2653,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1702.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2662,7 +2662,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1705-2.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2671,7 +2671,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1706.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2680,7 +2680,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1707.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2689,7 +2689,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1708.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2698,7 +2698,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1709.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2707,7 +2707,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1713.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2716,7 +2716,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1714.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2725,7 +2725,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1716.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
   {
     id: 'shooting10',
@@ -2734,7 +2734,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/330ci et 350 Z/IMG_1718.jpg',
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW 330ci & Nissan 350Z',
   },
 
   // Shootings - BMW M3 V8
@@ -2746,7 +2746,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2321.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2755,7 +2755,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2326.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2764,7 +2764,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2329.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2773,7 +2773,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2330.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2782,7 +2782,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2331.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2791,7 +2791,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2334.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2800,7 +2800,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2335.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2809,7 +2809,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2337.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2818,7 +2818,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2339.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2827,7 +2827,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2340.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2836,7 +2836,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2341.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2845,7 +2845,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2345.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2854,7 +2854,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2351.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2863,7 +2863,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2357.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2872,7 +2872,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2358.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2881,7 +2881,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2366.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2890,7 +2890,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2368.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
   {
     id: 'shooting11',
@@ -2899,7 +2899,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/M3V8Grise/IMG_2377.jpg',
     alt: 'BMW M3 V8',
     date: '22/03/2024',
-    description: '',
+    description: 'BMW M3 V8',
   },
 
   // Shootings - Lamborghini Revuelto
@@ -2911,7 +2911,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2389.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2920,7 +2920,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2391.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2929,7 +2929,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2394.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2938,7 +2938,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2395.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2947,7 +2947,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2397.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2956,7 +2956,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2399.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2965,7 +2965,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2404.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2974,7 +2974,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2405.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2983,7 +2983,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2407.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -2992,7 +2992,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2410.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3001,7 +3001,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2417.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3010,7 +3010,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2418.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3019,7 +3019,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2420.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3028,7 +3028,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2422.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3037,7 +3037,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2423-2.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3046,7 +3046,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2426.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3055,7 +3055,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2429.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3064,7 +3064,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2430.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3073,7 +3073,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2431.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3082,7 +3082,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2442.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3091,7 +3091,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2460.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3100,7 +3100,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2464.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3109,7 +3109,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2466.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3118,7 +3118,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2477.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3127,7 +3127,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2480-2.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
   {
     id: 'shooting12',
@@ -3136,7 +3136,7 @@ export const photos: Photo[] = [
     src: '/assets/images/Shooting_perso/LamboRevuelto/IMG_2481.jpg',
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
-    description: '',
+    description: 'Lamborghini Revuelto',
   },
 
   // Soon...
@@ -3147,7 +3147,7 @@ export const photos: Photo[] = [
     shootingId: 'automobile',
     src: '/assets/images/Logos/soon.jpg',
     alt: 'Soon...',
-    date: '',
+    date: '???',
     description: 'Soon...',
   },
 
@@ -3321,7 +3321,7 @@ export const photos: Photo[] = [
     src: '/assets/images/dessins/rs6_GMK.jpg',
     alt: 'Audi RS6 ABT "GMK Édition 1 of 1"',
     date: '03/05/2025',
-    description: 'Audi RS6 ABT "GMK Édition 1 of 1"',
+    description: 'Audi RS6 ABT "GMK Édition"',
     title: 'Audi RS6 ABT "GMK Édition 1 of 1"',
     isPreview: true
   },
