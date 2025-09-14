@@ -3317,7 +3317,7 @@ export const photos: Photo[] = [
   {
     id: 'drawing-preview-1',
     categoryId: 'drawings',
-    drawingId: 'corsa',
+    drawingId: 'gmk',
     src: '/assets/images/dessins/rs6_GMK.jpg',
     alt: 'Audi RS6 ABT "GMK Édition 1 of 1"',
     date: '03/05/2025',
@@ -3328,12 +3328,35 @@ export const photos: Photo[] = [
   {
     id: 'drawing-preview-4',
     categoryId: 'drawings',
-    drawingId: 'corsa',
+    drawingId: 'gmk',
     src: '/assets/images/dessins/rs6_GMK.jpg',
     alt: 'Audi RS6 ABT "GMK Édition 1 of 1"a',
     date: '03/05/2025',
     description: 'Audi RS6 ABT "GMK Édition 1 of 1"',
     title: 'Audi RS6 ABT "GMK Édition 1 of 1"',
+  },
+
+  // Corsa
+  {
+    id: 'drawing-preview-2',
+    categoryId: 'drawings',
+    drawingId: 'corsa',
+    src: '/assets/images/dessins/corsa.jpg',
+    alt: 'Opel Corsa',
+    date: '03/05/2025',
+    description: 'Opel Corsa',
+    title: 'Opel Corsa',
+    isPreview: true
+  },
+  {
+    id: 'drawing-preview-5',
+    categoryId: 'drawings',
+    drawingId: 'corsa',
+    src: '/assets/images/dessins/corsa.jpg',
+    alt: 'Opel Corsa',
+    date: '03/05/2025',
+    description: 'Opel Corsa',
+    title: 'Opel Corsa',
   },
 
   // Soon...
