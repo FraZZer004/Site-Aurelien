@@ -14,7 +14,6 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
   const [touchEnd, setTouchEnd] = React.useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
-  // Minimum distance pour déclencher un swipe
   const minSwipeDistance = 50;
 
   // Mettre à jour l'index courant quand la photo change
@@ -25,11 +24,18 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
     }
   }, [photo, photos]);
 
+  // 👇 Ajout de la gestion clavier : ESC ferme la lightbox
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft') onNavigate('prev');
-      if (e.key === 'ArrowRight') onNavigate('next');
+      if (e.key === 'Escape') {
+        onClose();
+      }
+      if (e.key === 'ArrowLeft') {
+        onNavigate('prev');
+      }
+      if (e.key === 'ArrowRight') {
+        onNavigate('next');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -146,7 +152,7 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
             )}
           </div>
 
-          {/* Informations de la photo/vidéo */}
+          {/* Infos photo/vidéo */}
           <div className="absolute bottom-20 md:bottom-16 left-4 right-4 text-white text-center">
             <div className="mt-4 text-white px-2">
               <div className="flex justify-between items-center text-sm text-gray-300">
@@ -156,7 +162,7 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
             </div>
           </div>
 
-          {/* Indicateur de navigation sur mobile */}
+          {/* Indicateur mobile */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex justify-center md:hidden">
             <div className="flex space-x-2">
               {photos.map((_, index) => (
@@ -170,7 +176,7 @@ const Lightbox: React.FC<LightboxProps> = ({ photo, photos, onClose, onNavigate 
             </div>
           </div>
 
-          {/* Instructions de navigation sur mobile */}
+          {/* Instructions mobile */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-white text-xs opacity-70 md:hidden text-center">
             Glissez ou touchez les côtés pour naviguer
           </div>
