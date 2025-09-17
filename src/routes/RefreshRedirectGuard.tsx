@@ -10,6 +10,8 @@ const rules = [
     { test: /^\/portfolio\/shootings\/[^/]+$/, to: '/portfolio/shootings' },
     // Affiches
     { test: /^\/portfolio\/affiches\/[^/]+$/, to: '/portfolio/affiches' },
+    // Contact
+    { test: /^\/portfolio\/contact\/[^/]+$/, to: '/portfolio/contact' },
     // Ajoute ici d’autres sections détail -> base si besoin
 ];
 
