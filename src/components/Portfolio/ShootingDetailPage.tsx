@@ -1,28 +1,37 @@
+
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { photos } from '../../data/photos';
 import { ArrowLeft } from 'lucide-react';
-import MasonryGrid from './MasonryGrid';
+import CarouselBlock from './CarouselBlock';
 
 const ShootingDetailPage: React.FC = () => {
     const { shootingId } = useParams<{ shootingId: string }>();
     const navigate = useNavigate();
 
-    // Preview du shooting (titre / description)
+    // Get shooting preview for title and description
     const shootingPreview = photos.find(
-        p =>
-            p.categoryId === 'shootings' &&
+        p => p.categoryId === 'shootings' &&
             p.shootingId === shootingId &&
             p.isPreview
     );
 
-    // Toutes les photos du shooting (hors preview)
+    // Get all photos for this shooting (excluding preview)
     const shootingPhotos = photos.filter(
-        p =>
-            p.categoryId === 'shootings' &&
+        p => p.categoryId === 'shootings' &&
             p.shootingId === shootingId &&
             !p.isPreview
     );
+
+    // Group photos by subEventId (we'll use this for different series/themes)
+    const subShootingGroups = shootingPhotos.reduce((groups, photo) => {
+        const subEventId = photo.subEventId || photo.id; // Use photo id if no subEventId
+        if (!groups[subEventId]) {
+            groups[subEventId] = [];
+        }
+        groups[subEventId].push(photo);
+        return groups;
+    }, {} as Record<string, typeof shootingPhotos>);
 
     const goBack = () => navigate('/portfolio/shootings');
 
@@ -57,8 +66,22 @@ const ShootingDetailPage: React.FC = () => {
                     {shootingPreview.date} — {shootingPreview.description}
                 </p>
 
-                {/* Mosaïque de photos — identique à la page Évènements */}
-                <MasonryGrid photos={shootingPhotos} />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {Object.entries(subShootingGroups).map(([subShootingId, subShootingPhotos]) => {
+                        // Get the first photo to use as preview and for title/description
+                        const previewPhoto = subShootingPhotos[0];
+
+                        return (
+                            <CarouselBlock
+                                key={subShootingId}
+                                photos={subShootingPhotos}
+                                title={previewPhoto.title || previewPhoto.alt}
+                                date={previewPhoto.date}
+                                description={previewPhoto.description}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

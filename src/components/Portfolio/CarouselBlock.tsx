@@ -107,7 +107,7 @@ const CarouselBlock: React.FC<CarouselBlockProps> = ({ photos, title, date, desc
           </div>
 
           {/* Content section with glass morphism effect */}
-          <div className="relative p-6 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm">
+            <div className="relative p-6 bg-[#FFFCEF]/95 dark:bg-[#1E1E1C]/95 backdrop-blur-sm">
             {/* Decorative line */}
             <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
 
@@ -125,7 +125,9 @@ const CarouselBlock: React.FC<CarouselBlockProps> = ({ photos, title, date, desc
             </div>
 
             {/* Hover indicator */}
-            <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-red-700 orange-500 to-yellow-400 transition-all duration-500 ${isHovered ? 'w-full' : 'w-0'}`}></div>
+              <div
+                  className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#722F37] to-[#EFFBBB] transition-all duration-500 ${isHovered ? 'w-full' : 'w-0'}`}
+              ></div>
           </div>
         </div>
 
