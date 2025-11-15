@@ -21,21 +21,21 @@ const HeroSection: React.FC = () => {
                     {/* 🔥 Halo ovale flou derrière titre + texte + bouton */}
                     <div
                         className="
-    pointer-events-none
-    absolute
-    -inset-x-10
-    -inset-y-4
-    rounded-[999px]
-    backdrop-blur-[1.5px]
-    bg-[radial-gradient(
-      ellipse_at_center,
-      rgba(0,0,0,0.65)_0%,
-      rgba(0,0,0,0.50)_25%,
-      rgba(0,0,0,0.30)_55%,
-      rgba(0,0,0,0.12)_75%,
-      rgba(0,0,0,0)_100%
-    )]
-  "
+                            pointer-events-none
+                            absolute
+                            -inset-x-10
+                            -inset-y-4
+                            rounded-[999px]
+                            backdrop-blur-[1.5px]
+                            bg-[radial-gradient(
+                              ellipse_at_center,
+                              rgba(0,0,0,0.65)_0%,
+                              rgba(0,0,0,0.50)_25%,
+                              rgba(0,0,0,0.30)_55%,
+                              rgba(0,0,0,0.12)_75%,
+                              rgba(0,0,0,0)_100%
+                            )]
+                          "
                     />
 
                     {/* Contenu réel, par-dessus le halo */}
