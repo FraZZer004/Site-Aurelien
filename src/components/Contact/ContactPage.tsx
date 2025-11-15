@@ -88,7 +88,7 @@ const ContactPage: React.FC = () => {
                         px-4 py-2.5 text-sm
                         text-black dark:text-white
                         placeholder:text-gray-400 dark:placeholder:text-gray-500
-                        focus:outline-none focus:ring-2 focus:ring-blue-500/70 focus:border-transparent
+                        focus:outline-none focus:ring-2 focus:ring-yellow-500/70 focus:border-transparent
                         transition-colors duration-300
                       "
                                             placeholder="Nom & prénom"
@@ -110,7 +110,7 @@ const ContactPage: React.FC = () => {
                         px-4 py-2.5 text-sm
                         text-black dark:text-white
                         placeholder:text-gray-400 dark:placeholder:text-gray-500
-                        focus:outline-none focus:ring-2 focus:ring-blue-500/70 focus:border-transparent
+                        focus:outline-none focus:ring-2 focus:ring-yellow-500/70 focus:border-transparent
                         transition-colors duration-300
                       "
                                             placeholder="tonadresse@mail.com"
@@ -132,7 +132,7 @@ const ContactPage: React.FC = () => {
                       px-4 py-2.5 text-sm
                       text-black dark:text-white
                       placeholder:text-gray-400 dark:placeholder:text-gray-500
-                      focus:outline-none focus:ring-2 focus:ring-blue-500/70 focus:border-transparent
+                      focus:outline-none focus:ring-2 focus:ring-yellow-500/70 focus:border-transparent
                       transition-colors duration-300
                     "
                                         placeholder="Shooting automobile, événement, devis…"
@@ -155,7 +155,7 @@ const ContactPage: React.FC = () => {
                       text-black dark:text-white
                       placeholder:text-gray-400 dark:placeholder:text-gray-500
                       resize-none
-                      focus:outline-none focus:ring-2 focus:ring-blue-500/70 focus:border-transparent
+                      focus:outline-none focus:ring-2 focus:ring-yellow-500/70 focus:border-transparent
                       transition-colors duration-300
                     "
                                         placeholder="Parle-moi de ton projet, de la date, du lieu, de ton véhicule…"
