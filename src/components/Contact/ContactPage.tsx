@@ -13,7 +13,7 @@ const ContactPage: React.FC = () => {
         const formData = new FormData(form);
 
         try {
-            const res = await fetch('https://formspree.io/f/xdkyzwjb', {
+            const res = await fetch('https://formspree.io/f/xdkyzbjy', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
