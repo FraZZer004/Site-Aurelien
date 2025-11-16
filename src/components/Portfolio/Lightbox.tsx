@@ -108,20 +108,44 @@ const Lightbox: React.FC<LightboxProps> = ({
                 {hasPrev && (
                     <button
                         onClick={() => onNavigate('prev')}
-                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white p-4 md:p-2 hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 rounded-full"
+                        className="
+                            absolute left-2 md:left-4 top-1/2 -translate-y-1/2
+                            p-3 md:p-2
+                            text-yellow-300
+                            rounded-full
+                            bg-white/5
+                            backdrop-blur-sm
+                            border border-yellow-400/30
+                            hover:bg-yellow-300/20
+                            hover:text-yellow-200
+                            transition-all duration-200
+                            z-10
+                        "
                         aria-label="Photo précédente"
                     >
-                        <ChevronLeft size={32} className="md:w-10 md:h-10" />
+                        <ChevronLeft size={28} className="md:w-8 md:h-8" />
                     </button>
                 )}
 
                 {hasNext && (
                     <button
                         onClick={() => onNavigate('next')}
-                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white p-4 md:p-2 hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 rounded-full"
+                        className="
+                            absolute right-2 md:right-4 top-1/2 -translate-y-1/2
+                            p-3 md:p-2
+                            text-yellow-300
+                            rounded-full
+                            bg-white/5
+                            backdrop-blur-sm
+                            border border-yellow-400/30
+                            hover:bg-yellow-300/20
+                            hover:text-yellow-200
+                            transition-all duration-200
+                            z-10
+                        "
                         aria-label="Photo suivante"
                     >
-                        <ChevronRight size={32} className="md:w-10 md:h-10" />
+                        <ChevronRight size={28} className="md:w-8 md:h-8" />
                     </button>
                 )}
 
@@ -173,6 +197,23 @@ const Lightbox: React.FC<LightboxProps> = ({
                             <span>{photo.description}</span>
                         </div>
                     </div>
+                </div>
+
+                {/* Indicateur desktop (numérique) */}
+                <div
+                    className="
+                        hidden md:flex
+                        absolute bottom-8 left-1/2 -translate-x-1/2
+                        px-4 py-1.5
+                        rounded-full
+                        bg-black/40
+                        backdrop-blur-sm
+                        border border-yellow-400/30
+                        text-yellow-300
+                        text-sm font-light tracking-wide
+                    "
+                >
+                    {activeIndex + 1} / {photos.length}
                 </div>
 
                 {/* Indicateur mobile (numérique) */}

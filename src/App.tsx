@@ -14,6 +14,7 @@ import DrawingDetailPage from './components/Portfolio/DrawingDetailPage';
 import AffichesGalleryPage from './components/Portfolio/AffichesGalleryPage';
 import AfficheDetailPage from './components/Portfolio/AfficheDetailPage';
 import { ThemeProvider } from './context/ThemeContext';
+import BackToTopButton from "./components/UI/BackToTopButton";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             </Routes>
           </Layout>
         </Router>
+          <BackToTopButton />
       </ThemeProvider>
   );
 }

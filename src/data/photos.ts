@@ -3214,7 +3214,7 @@ export const photos: Photo[] = [
     date: '20/02/2024',
     description: 'BMW M4 Competition',
   },
-
+/*
   // Shootings - BMW M335i
 
   {
@@ -3280,7 +3280,7 @@ export const photos: Photo[] = [
     date: '05/03/2024',
     description: 'BMW M335i',
   },
-
+*/
   // Shootings - BMW M2 Competition
 
   {
@@ -5890,4 +5890,14 @@ export const photos: Photo[] = [
     date: '04/06/2025',
     description: '',
   },
+    {
+        id: 'affiche-4',
+        categoryId: 'affiches',
+        afficheId: 'rs3',
+        src: '/assets/images/Affiches/RS3.jpg',
+        alt: 'Affiche Audi RS3',
+        title: 'Affiche Audi RS3',
+        date: '11/11/2025',
+        description: '',
+    },
 ];
