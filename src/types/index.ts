@@ -1,8 +1,11 @@
+import type { LucideIcon } from 'lucide-react';
+
 export interface MenuItem {
-  id: string;
-  label: string;
-  path: string;
-  subItems?: MenuItem[];
+    id: string;
+    label: string;
+    path: string;
+    icon?: LucideIcon;
+    subItems?: MenuItem[];
 }
 
 export interface PhotographyCategory {

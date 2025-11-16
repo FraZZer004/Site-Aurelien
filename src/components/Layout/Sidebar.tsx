@@ -124,29 +124,55 @@ const Sidebar: React.FC<SidebarProps> = ({
 
                                             {/* Sous-menus */}
                                             {item.subItems && expandedMenu === item.id && (
-                                                <ul className="pl-3 space-y-2">
+                                                <ul className="pl-3 space-y-2 mt-2">
                                                     {item.subItems.map((subItem) => {
                                                         const isActiveSub = currentPath === subItem.path;
+                                                        const Icon = subItem.icon as
+                                                            | React.ComponentType<any>
+                                                            | undefined;
+
                                                         return (
                                                             <li key={subItem.id}>
                                                                 <button
-                                                                    onClick={() => handleNavigation(subItem.path)}
+                                                                    onClick={() =>
+                                                                        handleNavigation(subItem.path)
+                                                                    }
                                                                     className={`
+                                    group
                                     relative w-full text-left
+                                    flex items-center gap-3
                                     text-sm font-light
                                     px-3 py-2
                                     rounded-xl
                                     transition-all duration-200
                                     ${
                                                                         isActiveSub
-                                                                            ? 'bg-black/5 text-black dark:bg-white/8 dark:text-white'
-                                                                            : 'text-gray-500 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-gray-100'
+                                                                            ? 'bg-black/5 text-black dark:bg:white/8 dark:text-white'
+                                                                            : 'text-gray-500 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 hover:text-white dark:hover:text-gray-100'
                                                                     }
                                   `}
                                                                 >
-                                                                    {subItem.label}
+                                                                    {/* Icône */}
+                                                                    {Icon && (
+                                                                        <Icon
+                                                                            size={18}
+                                                                            className={`
+                                        transition-colors duration-200
+                                        ${
+                                                                                isActiveSub
+                                                                                    ? 'text-yellow-400'
+                                                                                    : 'text-white dark:text-gray-300 group-hover:text-yellow-400'
+                                                                            }
+                                      `}
+                                                                        />
+                                                                    )}
+
+                                                                    {/* Label */}
+                                                                    <span>{subItem.label}</span>
+
+                                                                    {/* Indicateur actif */}
                                                                     {isActiveSub && (
-                                                                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-4 rounded-full bg-black dark:bg-white" />
+                                                                        <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-4 rounded-full bg-yellow-400" />
                                                                     )}
                                                                 </button>
                                                             </li>
