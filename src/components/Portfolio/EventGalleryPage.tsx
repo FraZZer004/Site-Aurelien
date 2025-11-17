@@ -38,11 +38,10 @@ const buildEventPreviews = (): EventPreview[] => {
  */
 const getDateValue = (dateStr?: string): number => {
     if (!dateStr) return 0;
-    // On tente un parse robuste : si c'est déjà “YYYY-MM-DD” ou autre.
     const parsed = Date.parse(dateStr);
     if (!Number.isNaN(parsed)) return parsed;
 
-    // Si c'est un format genre "16/05 - 18/05/2025", on prend la dernière date.
+    // Format du type "16/05 - 18/05/2025" → on prend la dernière date
     const match = dateStr.match(/(\d{2}\/\d{2}\/\d{4})/g);
     if (match && match.length > 0) {
         const last = match[match.length - 1];
@@ -95,7 +94,7 @@ const EventGalleryPage: React.FC = () => {
     return (
         <section className="min-h-screen py-20 px-6 bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
             <div className="max-w-6xl mx-auto">
-                {/* HEADER (style 2ᵉ capture) */}
+                {/* HEADER */}
                 <header className="mb-10 md:mb-12">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-4">
                         Événements
@@ -110,18 +109,87 @@ const EventGalleryPage: React.FC = () => {
                         Utilise les filtres pour organiser les évènements par date ou par nom.
                     </p>
 
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                         {eventsCount} évènement{eventsCount > 1 ? 's' : ''} disponible
                         {eventsCount > 1 ? 's' : ''}.
                     </p>
 
-                    {/* Barre de tri alignée à droite sur desktop */}
-                    <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {/* espace à gauche, on peut laisser vide ou mettre quelque chose plus tard */}
-            </span>
+                    {/* 🔽 Barre de tri : mobile = 2x2, desktop = barre sur une ligne */}
+                    <div className="mt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        {/* Slot vide à gauche si besoin plus tard */}
+                        <span className="text-sm text-gray-500 dark:text-gray-400" />
 
-                        <div className="flex items-center gap-3 md:justify-end">
+                        {/* Version MOBILE / TABLET < md */}
+                        <div className="md:hidden w-full">
+              <span className="block mb-2 text-sm text-gray-500 dark:text-gray-400">
+                Trier par
+              </span>
+                            <div className="grid grid-cols-2 gap-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setSortOption('date-desc')}
+                                    className={`
+                    px-3 py-2 text-xs rounded-full
+                    border border-black/10 dark:border-white/20
+                    ${
+                                        sortOption === 'date-desc'
+                                            ? 'bg-yellow-400 text-black'
+                                            : 'bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300'
+                                    }
+                  `}
+                                >
+                                    Date récente
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setSortOption('date-asc')}
+                                    className={`
+                    px-3 py-2 text-xs rounded-full
+                    border border-black/10 dark:border-white/20
+                    ${
+                                        sortOption === 'date-asc'
+                                            ? 'bg-yellow-400 text-black'
+                                            : 'bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300'
+                                    }
+                  `}
+                                >
+                                    Date ancienne
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setSortOption('name-asc')}
+                                    className={`
+                    px-3 py-2 text-xs rounded-full
+                    border border-black/10 dark:border-white/20
+                    ${
+                                        sortOption === 'name-asc'
+                                            ? 'bg-yellow-400 text-black'
+                                            : 'bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300'
+                                    }
+                  `}
+                                >
+                                    Nom A–Z
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setSortOption('name-desc')}
+                                    className={`
+                    px-3 py-2 text-xs rounded-full
+                    border border-black/10 dark:border-white/20
+                    ${
+                                        sortOption === 'name-desc'
+                                            ? 'bg-yellow-400 text-black'
+                                            : 'bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300'
+                                    }
+                  `}
+                                >
+                                    Nom Z–A
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Version DESKTOP md+ : barre d’un seul tenant comme au début */}
+                        <div className="hidden md:flex items-center gap-3 md:justify-end">
               <span className="text-sm text-gray-500 dark:text-gray-400">
                 Trier par
               </span>
@@ -175,7 +243,7 @@ const EventGalleryPage: React.FC = () => {
                     </div>
                 </header>
 
-                {/* CARTES ÉVÈNEMENTS (style 1ʳᵉ capture) */}
+                {/* CARTES ÉVÈNEMENTS */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {sortedEvents.map((event) => (
                         <button
@@ -189,18 +257,13 @@ const EventGalleryPage: React.FC = () => {
                 transition-transform duration-300 hover:-translate-y-2
               "
                         >
-                            {/* Image */}
                             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
                                 <img
                                     src={event.src}
                                     alt={event.alt}
                                     className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
                                 />
-
-                                {/* Gradient en bas */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90" />
-
-                                {/* Texte en bas */}
                                 <div className="absolute inset-x-0 bottom-0 p-5">
                                     <h2 className="text-lg md:text-xl font-light text-white mb-1">
                                         {event.title}
