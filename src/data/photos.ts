@@ -25,6 +25,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Veyron',
+      brand: 'Bugatti',
+      color: 'Rouge',
   },
   {
     id: 'pa-bugatti-bolide-1',
@@ -36,6 +38,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Bolide',
+      brand: 'Bugatti',
+      color: 'Noir',
   },
   {
     id: 'pa-bugatti-veyron-2',
@@ -47,6 +51,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Veyron',
+      brand: 'Bugatti',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-vibes-3',
@@ -54,10 +60,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'ferrari-vibes',
     src: '/assets/images/PAB2025/ShootingsFefe/gmk-3.jpg',
-    alt: 'Ferrari Vibes - Prestige Auto Beaune',
+    alt: 'Ferrari 458 Italia',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Ferrari Vibes 🇮🇹',
+    title: 'Ferrari 458 Italia',
+      brand: 'Ferrari',
+      color: 'Blanc',
   },
   {
     id: 'pa-bugatti-veyron-3',
@@ -69,6 +77,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Veyron',
+      brand: 'Bugatti',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-vibes-10',
@@ -80,6 +90,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
+      color: 'Rouge',
   },
   {
     id: 'pa-bugatti-veyron-4',
@@ -91,6 +103,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Veyron',
+      brand: 'Bugatti',
+      color: 'Rouge',
   },
 
   // Prestige Auto 2025 - Bugatti Bolide
@@ -104,6 +118,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Bolide',
+      brand: 'Bugatti',
+      color: 'Noir',
   },
 
   // Prestige Auto 2025 - Ferrari Daytona SP3
@@ -117,6 +133,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-stand-gmk-2',
@@ -128,6 +146,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Stand GMK',
+      brand: 'Mercedes',
+      color: 'Noir',
   },
   {
     id: 'pa-ferrari-daytona-2',
@@ -139,6 +159,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-ferrari-vibes-7',
@@ -150,6 +172,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-ferrari-daytona-3',
@@ -161,6 +184,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-stand-gmk-6',
@@ -168,10 +193,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'stand-gmk',
     src: '/assets/images/PAB2025/GMK/gmk-6.jpg',
-    alt: 'Stand GMK - Prestige Auto Beaune',
+    alt: 'Lamborghini Aventador SV',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Stand GMK',
+    title: 'Lamborghini Aventador SV',
+      brand: 'Lamborghini',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-daytona-4',
@@ -183,6 +210,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-ferrari-vibes-13',
@@ -194,6 +223,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-ferrari-daytona-5',
@@ -205,6 +235,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-bugatti-bolide-4',
@@ -216,6 +248,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Bolide',
+      brand: 'Bugatti',
+      color: 'Noir',
   },
   {
     id: 'pa-ferrari-daytona-6',
@@ -227,6 +261,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-stand-gmk-5',
@@ -234,10 +270,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'stand-gmk',
     src: '/assets/images/PAB2025/GMK/gmk-5.jpg',
-    alt: 'Stand GMK - Prestige Auto Beaune',
+    alt: 'Lamborghini Aventador SV',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Stand GMK',
+    title: 'Lamborghini Aventador SV',
+      brand: 'Lamborghini',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-daytona-7',
@@ -249,6 +287,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Daytona SP3',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
 
   // Prestige Auto 2025 - Ferrari Vibes 🇮🇹
@@ -262,6 +302,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-stand-gmk-3',
@@ -273,6 +314,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Stand GMK',
+      brand: 'Mercedes',
   },
   {
     id: 'pa-ferrari-vibes-2',
@@ -280,10 +322,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'ferrari-vibes',
     src: '/assets/images/PAB2025/ShootingsFefe/gmk-2.jpg',
-    alt: 'Ferrari Vibes - Prestige Auto Beaune',
+    alt: 'Ferrari 458 Spider',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Ferrari Vibes 🇮🇹',
+    title: 'Ferrari 458 Spider',
+      brand: 'Ferrari',
+      color: 'Rouge',
   },
   {
     id: 'pa-bugatti-bolide-2',
@@ -295,6 +339,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Bolide',
+      brand: 'Bugatti',
+      color: 'Noir',
   },
   {
     id: 'pa-stand-gmk-1',
@@ -306,6 +352,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Stand GMK',
+      brand: 'Lamborghini',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-vibes-4',
@@ -317,6 +365,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-bugatti-bolide-5',
@@ -328,6 +377,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Bolide',
+      brand: 'Bugatti',
+      color: 'Noir',
   },
   {
     id: 'pa-ferrari-vibes-5',
@@ -339,6 +390,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-stand-gmk-7',
@@ -346,10 +398,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'stand-gmk',
     src: '/assets/images/PAB2025/GMK/gmk-7.jpg',
-    alt: 'Stand GMK - Prestige Auto Beaune',
+    alt: 'Lamborghini Aventador SV',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Stand GMK',
+    title: 'Lamborghini Aventador SV',
+      brand: 'Lamborghini',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-vibes-6',
@@ -357,10 +411,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'ferrari-vibes',
     src: '/assets/images/PAB2025/ShootingsFefe/gmk-6.jpg',
-    alt: 'Ferrari Vibes - Prestige Auto Beaune',
+    alt: 'Ferrari SF90 Stradale',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Ferrari Vibes 🇮🇹',
+    title: 'Ferrari SF90 Stradale',
+      brand: 'Ferrari',
+      color: 'Jaune',
   },
   {
     id: 'pa-stand-gmk-4',
@@ -368,10 +424,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'stand-gmk',
     src: '/assets/images/PAB2025/GMK/gmk-4.jpg',
-    alt: 'Stand GMK - Prestige Auto Beaune',
+    alt: 'Lamborghini Aventador SV',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Stand GMK',
+    title: 'Lamborghini Aventador SV',
+      brand: 'Lamborghini',
+      color: 'Rouge',
   },
   {
     id: 'pa-ferrari-vibes-8',
@@ -383,6 +441,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-ferrari-vibes-9',
@@ -394,6 +453,7 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Ferrari Vibes 🇮🇹',
+      brand: 'Ferrari',
   },
   {
     id: 'pa-ferrari-vibes-12',
@@ -401,10 +461,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'ferrari-vibes',
     src: '/assets/images/PAB2025/ShootingsFefe/gmk-12.jpg',
-    alt: 'Ferrari Vibes - Prestige Auto Beaune',
+    alt: 'Ferrari 458 Italia',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Ferrari Vibes 🇮🇹',
+    title: 'Ferrari 458 Italia',
+      brand: 'Ferrari',
+      color: 'Blanc',
   },
   {
     id: 'pa-stand-gmk-8',
@@ -412,10 +474,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'stand-gmk',
     src: '/assets/images/PAB2025/GMK/gmk-8.jpg',
-    alt: 'Stand GMK - Prestige Auto Beaune',
+    alt: 'Mercedes C63 AMG Black Séries',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Stand GMK',
+    title: 'Mercedes C63 AMG Black Séries',
+      brand: 'Mercedes',
+      color: 'Noir',
   },
   {
     id: 'pa-ferrari-vibes-14',
@@ -423,10 +487,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'ferrari-vibes',
     src: '/assets/images/PAB2025/ShootingsFefe/gmk-14.jpg',
-    alt: 'Ferrari Vibes - Prestige Auto Beaune',
+    alt: 'Ferrari 458 Italia',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Ferrari Vibes 🇮🇹',
+    title: 'Ferrari 458 Italia',
+      brand: 'Ferrari',
+      color: 'Blanc',
   },
   {
     id: 'pa-bugatti-bolide-3',
@@ -438,6 +504,8 @@ export const photos: Photo[] = [
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
     title: 'Bugatti Bolide',
+      brand: 'Bugatti',
+      color: 'Noir',
   },
   {
     id: 'pa-ferrari-vibes-15',
@@ -445,10 +513,12 @@ export const photos: Photo[] = [
     eventId: 'prestige-auto-2025',
     subEventId: 'ferrari-vibes',
     src: '/assets/images/PAB2025/ShootingsFefe/gmk-15.jpg',
-    alt: 'Ferrari Vibes - Prestige Auto Beaune',
+    alt: 'Ferrari 458 Italia',
     date: '16/05 - 18/05/2025',
     description: 'Prestige Auto 2025',
-    title: 'Ferrari Vibes 🇮🇹',
+    title: 'Ferrari 458 Italia',
+      brand: 'Ferrari',
+      color: 'Blanc',
   },
 
     /*
@@ -491,6 +561,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'BMW M3 E36 Coupé',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'pa-koenigsegg-agera-1',
@@ -502,6 +574,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
   {
     id: 'pa-e36-rouge-2',
@@ -513,6 +587,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'BMW M3 E36 Coupé',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'pa-koenigsegg-agera-2',
@@ -524,6 +600,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
   {
     id: 'pa-e36-rouge-3',
@@ -535,6 +613,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'BMW M3 E36 Coupé',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'pa-koenigsegg-agera-3',
@@ -546,6 +626,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
   {
     id: 'pa-e36-rouge-4',
@@ -557,6 +639,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'BMW M3 E36 Coupé',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'pa-koenigsegg-agera-4',
@@ -568,6 +652,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
   {
     id: 'pa-e36-rouge-5',
@@ -579,6 +665,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'BMW M3 E36 Coupé',
+      brand: 'BMW',
+      color: 'Rouge',
   },
 
   // Prestige Auto 2024 - Koenigsegg Agera (RS / One)
@@ -593,6 +681,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
   {
     id: 'pa-koenigsegg-agera-6',
@@ -604,6 +694,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
   {
     id: 'pa-koenigsegg-agera-7',
@@ -615,6 +707,8 @@ export const photos: Photo[] = [
     date: '02/05/2024',
     description: 'Prestige Auto 2024',
     title: 'Koenigsegg Agera (RS / One)',
+      brand: 'Koenigsegg',
+      color: 'Blanc',
   },
 
     /*
@@ -1050,7 +1144,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1061,6 +1157,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1071,7 +1169,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1082,6 +1182,8 @@ export const photos: Photo[] = [
     alt: 'Porsche 9FF Turbo',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Porsche',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1092,6 +1194,8 @@ export const photos: Photo[] = [
     alt: 'Renault Sport 01',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Renault',
+      color: 'Vert',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1102,7 +1206,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1113,6 +1219,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition Taaqz',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1123,7 +1231,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1134,6 +1244,8 @@ export const photos: Photo[] = [
     alt: 'Porsche 9FF Turbo',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Porsche',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1144,6 +1256,8 @@ export const photos: Photo[] = [
     alt: 'Renault Sport 01',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Renault',
+      color: 'Vert',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1154,7 +1268,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1165,6 +1281,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1175,7 +1293,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1186,6 +1306,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1196,6 +1318,8 @@ export const photos: Photo[] = [
     alt: 'Renault Sport 01',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Renault',
+      color: 'Vert',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1206,7 +1330,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1217,6 +1343,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition Taaqz',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1227,7 +1355,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1238,6 +1368,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1248,6 +1380,8 @@ export const photos: Photo[] = [
     alt: 'Ferrari F430',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Ferrari',
+      color: 'Rouge',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1259,6 +1393,8 @@ export const photos: Photo[] = [
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
     title: 'Renault Clio RS Line',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1269,6 +1405,8 @@ export const photos: Photo[] = [
     alt: 'Porsche 9FF Turbo',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Porsche',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1280,6 +1418,8 @@ export const photos: Photo[] = [
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
     title: 'Renault Clio RS Line',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1290,6 +1430,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1300,6 +1442,8 @@ export const photos: Photo[] = [
     alt: 'Porsche 718 Cayman GT4 RS',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1310,6 +1454,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1320,7 +1466,9 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Touring',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025 ',
-    title: 'Renault Clio RS Line',
+    title: 'BMW M3 Touring',
+      brand: 'BMW',
+      color: 'Blanc',
   },
 
   {
@@ -1332,6 +1480,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition Taaqz',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'BMW',
+      color: 'Violet',
   },
   {
     id: 'foire-boiserie-one-1',
@@ -1342,6 +1492,8 @@ export const photos: Photo[] = [
     alt: 'Porsche 718 Cayman GT4 RS',
     date: '02/08 - 03/08/2025',
     description: 'Foire Boiserie - 2025',
+      brand: 'Porsche',
+      color: 'Gris',
   },
 
 
@@ -2009,7 +2161,7 @@ export const photos: Photo[] = [
     title: 'Rassemblement De Bel Air',
   },
 
-    // Event -
+    // Event - Little Blue Heroes 2025
 
   {
     id: 'little-blue',
@@ -2028,10 +2180,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3065.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+      brand: 'Lamborghini',
+      color: 'Rouge',
   },
 {
     id: 'little-blue',
@@ -2039,10 +2193,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3066.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+    brand: 'Lamborghini',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2050,10 +2206,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3068.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+    brand: 'Lamborghini',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2061,10 +2219,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3069.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+    brand: 'Lamborghini',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2072,10 +2232,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3070.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+    brand: 'Lamborghini',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2083,10 +2245,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3071.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+    brand: 'Lamborghini',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2094,10 +2258,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3072.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Aventador',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Aventador',
+    brand: 'Lamborghini',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2105,10 +2271,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3073.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Ferrari 488 Pista',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Ferrari 488 Pista',
+    brand: 'Ferrari',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2116,10 +2284,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3076.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Ferrari 488 Pista',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Ferrari 488 Pista',
+    brand: 'Ferrari',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2127,10 +2297,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3077.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Ferrari 488 Pista',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Ferrari 488 Pista',
+    brand: 'Ferrari',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2138,10 +2310,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3078.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Ferrari 488 Pista',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Ferrari 488 Pista',
+    brand: 'Ferrari',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2149,10 +2323,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3079.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Ferrari 488 Pista',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Ferrari 488 Pista',
+    brand: 'Ferrari',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2160,10 +2336,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3080.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Ferrari 488 Pista',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Ferrari 488 Pista',
+    brand: 'Ferrari',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2171,10 +2349,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3081.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn',
+    brand: 'Lamborghini',
+    color: 'Vert',
 },
 {
     id: 'little-blue',
@@ -2182,10 +2362,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3082.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn',
+    brand: 'Lamborghini',
+    color: 'Vert',
 },
 {
     id: 'little-blue',
@@ -2193,10 +2375,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3083.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn',
+    brand: 'Lamborghini',
+    color: 'Vert',
 },
 {
     id: 'little-blue',
@@ -2204,10 +2388,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3085.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn STO',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn STO',
+    brand: 'Lamborghini',
+    color: 'Vert',
 },
 {
     id: 'little-blue',
@@ -2215,10 +2401,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3086.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Porsche GT3 RS',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Porsche GT3 RS',
+    brand: 'Porsche',
+    color: 'Bleu',
 },
 {
     id: 'little-blue',
@@ -2226,10 +2414,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3087.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'BMW M3 Compétition',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'BMW M3 Compétition',
+    brand: 'BMW',
+    color: 'Vert',
 },
 {
     id: 'little-blue',
@@ -2237,10 +2427,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3088.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn',
+    brand: 'Lamborghini',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2248,10 +2440,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3089.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'McLaren 720S',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'McLaren 720S',
+    brand: 'McLaren',
+    color: 'Bleu',
 },
 {
     id: 'little-blue',
@@ -2259,10 +2453,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3090.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Porsche GT3 RS',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Porsche GT3 RS',
+    brand: 'Porsche',
+    color: 'Rouge',
 },
 {
     id: 'little-blue',
@@ -2270,10 +2466,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3091.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Audi TT RS',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Audi TT RS',
+    brand: 'Audi',
+    color: 'Gris',
 },
 {
     id: 'little-blue',
@@ -2281,10 +2479,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3093.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn EVO',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn EVO',
+    brand: 'Lamborghini',
+    color: 'Jaune',
 },
 {
     id: 'little-blue',
@@ -2292,10 +2492,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3094.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn STO',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn STO',
+    brand: 'Lamborghini',
+    color: 'Noir',
 },
 {
     id: 'little-blue',
@@ -2303,10 +2505,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3095.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn STO',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn STO',
+    brand: 'Lamborghini',
+    color: 'Noir',
 },
 {
     id: 'little-blue',
@@ -2314,10 +2518,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3096.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn STO',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn STO',
+    brand: 'Lamborghini',
+    color: 'Noir',
 },
 {
     id: 'little-blue',
@@ -2325,10 +2531,12 @@ export const photos: Photo[] = [
     eventId: 'little-blue-heroes',
     subEventId: 'f1-vintage',
     src: '/assets/images/RoadTripAsso/IMG_3098.jpg',
-    alt: 'Little Blue Heroes - 2025',
+    alt: 'Lamborghini Huracàn STO',
     date: '07/10/2025',
     description: 'Little Blue Heroes - 2025',
-    title: 'Little Blue Heroes - 2025',
+    title: 'Lamborghini Huracàn STO',
+    brand: 'Lamborghini',
+    color: 'Noir',
 },
     {
         id: 'little-blue',
@@ -2336,10 +2544,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3103.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Lamborghini Huracàn5',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Lamborghini Huracàn',
+        brand: 'Lamborghini',
+        color: 'Vert',
     },
     {
         id: 'little-blue',
@@ -2347,10 +2557,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3106.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Lamborghini Huracàn EVO',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Lamborghini Huracàn EVO',
+        brand: 'Lamborghini',
+        color: 'Jaune',
     },
     {
         id: 'little-blue',
@@ -2358,10 +2570,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3107.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Porsche GT3 RS',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Porsche GT3 RS',
+        brand: 'Porsche',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2369,10 +2583,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3111.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Audi TT RS',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Audi TT RS',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'little-blue',
@@ -2380,10 +2596,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3115.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Porsche GT3 RS',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Porsche GT3 RS',
+        brand: 'Porsche',
+        color: 'Bleu',
     },
     {
         id: 'little-blue',
@@ -2391,10 +2609,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3116.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Porsche GT3 RS',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Porsche GT3 RS',
+        brand: 'Porsche',
+        color: 'Bleu',
     },
     {
         id: 'little-blue',
@@ -2402,10 +2622,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3119.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Lamborghini Huracàn STO',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Lamborghini Huracàn STO',
+        brand: 'Lamborghini',
+        color: 'Vert',
     },
     {
         id: 'little-blue',
@@ -2413,10 +2635,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3120.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Porsche GT3 RS',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Porsche GT3 RS',
+        brand: 'Porsche',
+        color: 'Bleu',
     },
     {
         id: 'little-blue',
@@ -2424,10 +2648,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3126.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2435,10 +2661,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3127.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2446,10 +2674,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3128.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2457,10 +2687,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3130.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2468,10 +2700,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3131.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2479,10 +2713,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3132.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2490,10 +2726,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3133.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Alpha Romero Giulia GTAm',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Alpha Romero Giulia GTAm',
+        brand: 'Alpha Romero',
+        color: 'Rouge',
     },
     {
         id: 'little-blue',
@@ -2501,10 +2739,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3134.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Lamborghini Huracàn EVO',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Lamborghini Huracàn EVO',
+        brand: 'Lamborghini',
+        color: 'Jaune',
     },
     {
         id: 'little-blue',
@@ -2512,10 +2752,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3152.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Porsche GT3 RS',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Porsche GT3 RS',
+        brand: 'Porsche',
+        color: 'Blanc',
     },
     {
         id: 'little-blue',
@@ -2523,10 +2765,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3156.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Lamborghini Huracàn EVO',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Lamborghini Huracàn EVO',
+        brand: 'Lamborghini',
+        color: 'Jaune',
     },
     {
         id: 'little-blue',
@@ -2534,10 +2778,12 @@ export const photos: Photo[] = [
         eventId: 'little-blue-heroes',
         subEventId: 'f1-vintage',
         src: '/assets/images/RoadTripAsso/IMG_3159.jpg',
-        alt: 'Little Blue Heroes - 2025',
+        alt: 'Lamborghini Huracàn EVO',
         date: '07/10/2025',
         description: 'Little Blue Heroes - 2025',
-        title: 'Little Blue Heroes - 2025',
+        title: 'Lamborghini Huracàn',
+        brand: 'Lamborghini',
+        color: 'Vert',
     },
 
   // Soon...
@@ -3096,6 +3342,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+    brand: 'BMW',
+    color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3105,6 +3353,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3114,6 +3364,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3123,6 +3375,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3132,6 +3386,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3141,6 +3397,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3150,6 +3408,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3159,6 +3419,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3168,6 +3430,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3177,6 +3441,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3186,6 +3452,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3195,6 +3463,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3204,6 +3474,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
   {
     id: 'shooting4',
@@ -3213,6 +3485,8 @@ export const photos: Photo[] = [
     alt: 'BMW M4 Competition',
     date: '20/02/2024',
     description: 'BMW M4 Competition',
+      brand: 'BMW',
+      color: 'Rouge',
   },
 /*
   // Shootings - BMW M335i
@@ -3291,6 +3565,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
     description: 'BMW M2 Competition',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'shooting6',
@@ -3300,6 +3576,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
     description: 'BMW M2 Competition',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'shooting6',
@@ -3309,6 +3587,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
     description: 'BMW M2 Competition',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'shooting6',
@@ -3318,6 +3598,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
     description: 'BMW M2 Competition',
+      brand: 'BMW',
+      color: 'Blanc',
   },
   {
     id: 'shooting6',
@@ -3327,6 +3609,8 @@ export const photos: Photo[] = [
     alt: 'BMW M2 Competition',
     date: '05/03/2024',
     description: 'BMW M2 Competition',
+      brand: 'BMW',
+      color: 'Blanc',
   },
 
 // Shootings - Porsche GT3 RS
@@ -3339,6 +3623,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3348,6 +3634,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3357,6 +3645,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3366,6 +3656,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3375,6 +3667,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3384,6 +3678,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3393,6 +3689,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3402,6 +3700,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3411,6 +3711,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
   {
     id: 'shooting7',
@@ -3420,6 +3722,8 @@ export const photos: Photo[] = [
     alt: 'Porsche GT3 RS',
     date: '22/03/2024',
     description: 'Porsche GT3 RS',
+      brand: 'Porsche',
+      color: 'Gris',
   },
 
 // Shootings - Volkswagen Golf GTI Édition Adidas
@@ -3432,6 +3736,8 @@ export const photos: Photo[] = [
     alt: 'Volkswagen Golf GTI "Édition Adidas"',
     date: '22/03/2024',
     description: 'Volkswagen Golf GTI',
+      brand: 'Volkswagen',
+      color: 'Rouge',
   },
   {
     id: 'shooting8',
@@ -3441,6 +3747,8 @@ export const photos: Photo[] = [
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
     description: 'Volkswagen Golf GTI',
+      brand: 'Volkswagen',
+      color: 'Rouge',
   },
   {
     id: 'shooting8',
@@ -3450,6 +3758,8 @@ export const photos: Photo[] = [
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
     description: 'Volkswagen Golf GTI',
+      brand: 'Volkswagen',
+      color: 'Rouge',
   },
   {
     id: 'shooting8',
@@ -3459,6 +3769,8 @@ export const photos: Photo[] = [
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
     description: 'Volkswagen Golf GTI',
+      brand: 'Volkswagen',
+      color: 'Rouge',
   },
   {
     id: 'shooting8',
@@ -3468,6 +3780,8 @@ export const photos: Photo[] = [
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
     description: 'Volkswagen Golf GTI',
+      brand: 'Volkswagen',
+      color: 'Rouge',
   },
   {
     id: 'shooting8',
@@ -3477,6 +3791,8 @@ export const photos: Photo[] = [
     alt: 'Volkswagen Golf GTI Édition Adidas',
     date: '22/03/2024',
     description: 'Volkswagen Golf GTI',
+      brand: 'Volkswagen',
+      color: 'Rouge',
   },
 
 // Shootings - Renault Clio RS
@@ -3489,6 +3805,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
   {
     id: 'shooting9',
@@ -3498,6 +3816,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
   {
     id: 'shooting9',
@@ -3507,6 +3827,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
   {
     id: 'shooting9',
@@ -3516,6 +3838,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
   {
     id: 'shooting9',
@@ -3525,6 +3849,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
   {
     id: 'shooting9',
@@ -3534,6 +3860,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
   {
     id: 'shooting9',
@@ -3543,6 +3871,8 @@ export const photos: Photo[] = [
     alt: 'Renault Clio RS',
     date: '22/03/2024',
     description: 'Renault Clio RS',
+      brand: 'Renault',
+      color: 'Blanc',
   },
 
 // Shootings - BMW 330ci + Nissan 350Z
@@ -3555,6 +3885,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3564,6 +3896,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3573,6 +3907,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3582,6 +3918,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3591,6 +3929,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3600,6 +3940,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3609,6 +3951,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3618,6 +3962,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3627,6 +3973,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3636,6 +3984,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3645,6 +3995,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3654,6 +4006,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3663,6 +4017,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3672,6 +4028,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3681,6 +4039,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3690,6 +4050,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3699,6 +4061,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3708,6 +4072,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3717,6 +4083,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
   {
     id: 'shooting10',
@@ -3726,6 +4094,8 @@ export const photos: Photo[] = [
     alt: 'BMW 330ci & Nissan 350Z',
     date: '22/03/2024',
     description: 'BMW 330ci & Nissan 350Z',
+      brand: 'Nissan',
+      color: 'Gris',
   },
 
   // Shootings - BMW M3 E92
@@ -3738,6 +4108,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3747,6 +4119,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3756,6 +4130,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3765,6 +4141,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3774,6 +4152,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3783,6 +4163,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3792,6 +4174,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3801,6 +4185,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3810,6 +4196,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3819,6 +4207,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3828,6 +4218,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3837,6 +4229,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3846,6 +4240,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3855,6 +4251,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3864,6 +4262,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3873,6 +4273,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3882,6 +4284,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
   {
     id: 'shooting11',
@@ -3891,6 +4295,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 E92',
     date: '22/03/2024',
     description: 'BMW M3 E92',
+      brand: 'BMW',
+      color: 'Gris',
   },
 
   // Shootings - Lamborghini Revuelto
@@ -3903,6 +4309,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3912,6 +4320,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3921,6 +4331,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3930,6 +4342,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3939,6 +4353,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3948,6 +4364,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3957,6 +4375,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3966,6 +4386,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3975,6 +4397,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3984,6 +4408,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -3993,6 +4419,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4002,6 +4430,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4011,6 +4441,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4020,6 +4452,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4029,6 +4463,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4038,6 +4474,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4047,6 +4485,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4056,6 +4496,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4065,6 +4507,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4074,6 +4518,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4083,6 +4529,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4092,6 +4540,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4101,6 +4551,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4110,6 +4562,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4119,6 +4573,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
   {
     id: 'shooting12',
@@ -4128,6 +4584,8 @@ export const photos: Photo[] = [
     alt: 'Lamborghini Revuelto',
     date: '22/03/2024',
     description: 'Lamborghini Revuelto',
+      brand: 'Lamborghini',
+      color: 'Violet',
   },
 
     // BMW M3 Compétition
@@ -4140,6 +4598,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4149,6 +4609,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4158,6 +4620,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4167,6 +4631,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4176,6 +4642,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4185,6 +4653,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4194,6 +4664,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4203,6 +4675,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
   {
     id: 'shooting13',
@@ -4212,6 +4686,8 @@ export const photos: Photo[] = [
     alt: 'BMW M3 Compétition',
     date: '18/09/2025',
     description: 'BMW M3 Compétition',
+      brand: 'BMW',
+      color: 'Noir',
   },
 
     // Hyundai I30N
@@ -4224,6 +4700,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4233,6 +4711,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4242,6 +4722,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4251,6 +4733,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4260,6 +4744,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4269,6 +4755,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4278,6 +4766,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4287,6 +4777,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4296,6 +4788,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4305,6 +4799,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4314,6 +4810,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4323,6 +4821,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4332,6 +4832,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4341,6 +4843,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4350,6 +4854,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4359,6 +4865,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4368,6 +4876,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4377,6 +4887,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
   {
     id: 'shooting14',
@@ -4386,6 +4898,8 @@ export const photos: Photo[] = [
     alt: 'Hyundai I30N',
     date: '18/09/2025',
     description: 'Hyundai I30N',
+      brand: 'Hyundai',
+      color: 'Bleu',
   },
 
     // Audi RS3
@@ -4398,6 +4912,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4407,6 +4923,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4416,6 +4934,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4425,6 +4945,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4434,6 +4956,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4443,6 +4967,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4452,6 +4978,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4461,6 +4989,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4470,6 +5000,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4479,6 +5011,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4488,6 +5022,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4497,6 +5033,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4506,6 +5044,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4515,6 +5055,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4524,6 +5066,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4533,6 +5077,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4542,6 +5088,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4551,6 +5099,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4560,6 +5110,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4569,6 +5121,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4578,6 +5132,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4587,6 +5143,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4596,6 +5154,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4605,6 +5165,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4614,6 +5176,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4623,6 +5187,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4632,6 +5198,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4641,6 +5209,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4650,6 +5220,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
     {
         id: 'shooting15',
@@ -4659,6 +5231,8 @@ export const photos: Photo[] = [
         alt: 'Audi RS3',
         date: '11/11/2025',
         description: 'Audi RS3',
+        brand: 'Audi',
+        color: 'Gris',
     },
 
     // BMW 335i E90
@@ -4671,6 +5245,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4680,6 +5256,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },{
         id: 'shooting16',
         categoryId: 'shootings',
@@ -4688,6 +5266,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4697,6 +5277,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4706,6 +5288,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4715,6 +5299,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4724,6 +5310,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4733,6 +5321,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4742,6 +5332,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4751,6 +5343,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4760,6 +5354,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4769,6 +5365,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4778,6 +5376,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4787,6 +5387,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4796,6 +5398,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4805,6 +5409,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4814,6 +5420,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
     {
         id: 'shooting16',
@@ -4823,6 +5431,8 @@ export const photos: Photo[] = [
         alt: 'BMW 335i E90',
         date: '03/11/2025',
         description: 'BMW 335i E90',
+        brand: 'BMW',
+        color: 'Gris',
     },
 
     // Shootings Moto

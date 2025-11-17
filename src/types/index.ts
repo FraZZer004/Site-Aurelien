@@ -32,19 +32,20 @@ export const isVideoItem = (item: Pick<Photo, 'src' | 'mediaType'>): boolean =>
 
 export interface Photo {
   id: string;
-  categoryId: string;
   src: string;
   alt: string;
   date: string;
   description: string;
+  title?: string;
+  isPreview?: boolean;
+
+  categoryId: string;
   eventId?: string;
   shootingId?: string;
   artId?: string;
   drawingId?: string;
   afficheId?: string;
   subEventId?: string;
-  title?: string;
-  isPreview?: boolean;
 
   /** --- Nouveaux champs optionnels --- */
   mediaType?: MediaType;     // 'video' pour forcer si besoin
@@ -52,6 +53,10 @@ export interface Photo {
   muted?: boolean;           // utile si autoplay silencieux
   loop?: boolean;            // boucle
   controls?: boolean;        // true par défaut côté rendu
+
+  brand?: string;        // 'Audi', 'BMW', etc.
+  color?: string;        // 'red', 'black', 'blue', etc.
+  keywords?: string[];   // ['RS6', 'Avant', 'V8'] par exemple
 }
 
 export interface SocialLink {
