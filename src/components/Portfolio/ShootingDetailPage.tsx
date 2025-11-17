@@ -2,36 +2,76 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { photos } from '../../data/photos';
-import MasonryGrid from './MasonryGrid';
 import { Photo } from '../../types';
+import PhotoCard from './PhotoCard';
 
 type BrandFilter = 'all' | string;
 type ColorFilter = 'all' | string;
+
+interface ShootingGroup {
+    key: string;          // clé de regroupement (ici : title)
+    preview: Photo;       // photo utilisée pour l’aperçu de la carte
+    photos: Photo[];      // toutes les photos de cette voiture
+    brand?: string;
+    color?: string;
+}
 
 const ShootingDetailPage: React.FC = () => {
     const { shootingId } = useParams<{ shootingId: string }>();
     const navigate = useNavigate();
 
-    // Preview du shooting pour le header
+    // Preview du shooting pour le header (affiche de la section auto/moto/divers)
     const shootingPreview = photos.find(
-        (p) =>
+        (p: any) =>
             p.categoryId === 'shootings' &&
-            (p as any).shootingId === shootingId &&
+            p.shootingId === shootingId &&
             p.isPreview
-    );
+    ) as Photo | undefined;
 
-    // Toutes les photos du shooting (sans la preview)
+    // Toutes les photos de ce shooting (sans la preview de section)
     const shootingPhotos: Photo[] = photos.filter(
-        (p) =>
+        (p: any) =>
             p.categoryId === 'shootings' &&
-            (p as any).shootingId === shootingId &&
+            p.shootingId === shootingId &&
             !p.isPreview
     );
 
     const [brandFilter, setBrandFilter] = React.useState<BrandFilter>('all');
     const [colorFilter, setColorFilter] = React.useState<ColorFilter>('all');
 
-    // Marques dispo
+    // 🔹 Regrouper les photos par "voiture" (on se base sur le title)
+    const groups: ShootingGroup[] = React.useMemo(() => {
+        const map = new Map<string, ShootingGroup>();
+
+        shootingPhotos.forEach((p: any) => {
+            const key =
+                (p.modelId as string | undefined) || // si jamais tu ajoutes un id de modèle un jour
+                (p.title as string | undefined) ||
+                (p.alt as string | undefined) ||
+                p.src; // fallback
+
+            const existing = map.get(key);
+            if (!existing) {
+                map.set(key, {
+                    key,
+                    preview: p,
+                    photos: [p],
+                    brand: p.brand,
+                    color: p.color,
+                });
+            } else {
+                existing.photos.push(p);
+                // si on trouve une vraie preview pour cette voiture, on la prend
+                if (!(existing.preview as any).isPreview && (p as any).isPreview) {
+                    existing.preview = p;
+                }
+            }
+        });
+
+        return Array.from(map.values());
+    }, [shootingPhotos]);
+
+    // Marques dispo, à partir de toutes les photos du shooting
     const brands = React.useMemo(
         () =>
             Array.from(
@@ -57,16 +97,16 @@ const ShootingDetailPage: React.FC = () => {
         [shootingPhotos]
     );
 
-    // Application des filtres
-    const filteredPhotos = React.useMemo(() => {
-        return shootingPhotos.filter((p: any) => {
+    // 🔹 Application des filtres au NIVEAU DES GROUPES (voitures)
+    const filteredGroups = React.useMemo(() => {
+        return groups.filter((g) => {
             const matchBrand =
-                brandFilter === 'all' || (p.brand && p.brand === brandFilter);
+                brandFilter === 'all' || (g.brand && g.brand === brandFilter);
             const matchColor =
-                colorFilter === 'all' || (p.color && p.color === colorFilter);
+                colorFilter === 'all' || (g.color && g.color === colorFilter);
             return matchBrand && matchColor;
         });
-    }, [shootingPhotos, brandFilter, colorFilter]);
+    }, [groups, brandFilter, colorFilter]);
 
     const goBack = () => navigate('/portfolio/shootings');
 
@@ -101,7 +141,7 @@ const ShootingDetailPage: React.FC = () => {
                     Retour aux shootings
                 </button>
 
-                {/* HEADER */}
+                {/* HEADER type "Prestige Auto 2025" */}
                 <header className="grid gap-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-center mb-10 md:mb-14">
                     {/* Texte */}
                     <div>
@@ -125,10 +165,9 @@ const ShootingDetailPage: React.FC = () => {
                         </p>
 
                         <p className="mt-10 text-xs md:text-sm text-gray-500 dark:text-gray-500">
-                            {filteredPhotos.length} photo
-                            {filteredPhotos.length > 1 ? 's' : ''} affichée
-                            {filteredPhotos.length > 1 ? 's' : ''} sur{' '}
-                            {shootingPhotos.length}.
+                            {filteredGroups.length} voiture
+                            {filteredGroups.length > 1 ? 's' : ''} affichée
+                            {filteredGroups.length > 1 ? 's' : ''} sur {groups.length}.
                         </p>
                     </div>
 
@@ -145,7 +184,7 @@ const ShootingDetailPage: React.FC = () => {
                     </div>
                 </header>
 
-                {/* 🎛️ Filtres Marque / Couleur — version mobile-friendly */}
+                {/* 🎛️ Filtres Marque / Couleur — mobile-friendly */}
                 {(brands.length > 0 || colors.length > 0) && (
                     <div className="mb-10 space-y-4">
                         {/* Marque */}
@@ -222,8 +261,18 @@ const ShootingDetailPage: React.FC = () => {
                     </div>
                 )}
 
-                {/* Mosaïque */}
-                <MasonryGrid photos={filteredPhotos} />
+                {/* 🧱 ICI on remplace la mosaïque de photos par des BOX type dessins */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredGroups.map((group) => (
+                        <PhotoCard
+                            key={group.key}
+                            photos={group.photos}
+                            title={group.preview.title || group.preview.alt}
+                            date={group.preview.date}
+                            description={group.preview.description}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
