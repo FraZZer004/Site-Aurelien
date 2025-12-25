@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Photo } from '../../types';
 import FadeInSection from '../UI/FadeInSection';
 import Lightbox from './Lightbox';
@@ -8,19 +8,21 @@ interface MasonryGridProps {
 }
 
 const MasonryGrid: React.FC<MasonryGridProps> = ({ photos }) => {
-    const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+    const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const [columns, setColumns] = useState(3);
+
+    // Photo dérivée (source de vérité = index)
+    const selectedPhoto = useMemo(
+        () => (currentIndex === null ? null : photos[currentIndex] ?? null),
+        [currentIndex, photos]
+    );
 
     // Ajuster le nombre de colonnes selon la taille d'écran
     useEffect(() => {
         const updateColumns = () => {
-            if (window.innerWidth < 640) {
-                setColumns(1);
-            } else if (window.innerWidth < 1024) {
-                setColumns(2);
-            } else {
-                setColumns(3);
-            }
+            if (window.innerWidth < 640) setColumns(1);
+            else if (window.innerWidth < 1024) setColumns(2);
+            else setColumns(3);
         };
 
         updateColumns();
@@ -29,37 +31,38 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ photos }) => {
     }, []);
 
     // Distribuer les photos dans les colonnes
-    const distributePhotos = () => {
-        const photoColumns: Photo[][] = Array.from({ length: columns }, () => []);
-
+    const photoColumns = useMemo(() => {
+        const cols: Photo[][] = Array.from({ length: columns }, () => []);
         photos.forEach((photo, index) => {
-            const columnIndex = index % columns;
-            photoColumns[columnIndex].push(photo);
+            cols[index % columns].push(photo);
         });
+        return cols;
+    }, [photos, columns]);
 
-        return photoColumns;
-    };
+    const openLightbox = useCallback((photo: Photo) => {
+        // index fiable (id puis src en fallback)
+        const idx =
+            photos.findIndex((p) => p.id === photo.id) ??
+            photos.findIndex((p) => p.src === photo.src);
 
-    const openLightbox = (photo: Photo) => {
-        setSelectedPhoto(photo);
-    };
+        setCurrentIndex(idx >= 0 ? idx : 0);
+    }, [photos]);
 
-    const closeLightbox = () => {
-        setSelectedPhoto(null);
-    };
+    const closeLightbox = useCallback(() => {
+        setCurrentIndex(null);
+    }, []);
 
-    const navigatePhoto = (direction: 'prev' | 'next') => {
-        if (!selectedPhoto) return;
+    const navigatePhoto = useCallback((direction: 'prev' | 'next') => {
+        setCurrentIndex((i) => {
+            if (i === null) return i;
+            const next =
+                direction === 'prev'
+                    ? Math.max(i - 1, 0)
+                    : Math.min(i + 1, photos.length - 1);
 
-        const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id);
-        const newIndex = direction === 'prev' ? currentIndex - 1 : currentIndex + 1;
-
-        if (newIndex >= 0 && newIndex < photos.length) {
-            setSelectedPhoto(photos[newIndex]);
-        }
-    };
-
-    const photoColumns = distributePhotos();
+            return next;
+        });
+    }, [photos.length]);
 
     return (
         <>
@@ -83,7 +86,6 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ photos }) => {
                                             loading="lazy"
                                         />
 
-                                        {/* Overlay avec informations au hover */}
                                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-end">
                                             <div className="p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                                 <h3 className="text-lg font-light mb-1">{photo.alt}</h3>
@@ -93,6 +95,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ photos }) => {
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </FadeInSection>
@@ -101,12 +104,12 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({ photos }) => {
                 ))}
             </div>
 
-            {/* Lightbox */}
             <Lightbox
                 photo={selectedPhoto}
                 photos={photos}
                 onClose={closeLightbox}
                 onNavigate={navigatePhoto}
+                currentIndex={currentIndex ?? undefined}   // ✅ on l’utilise maintenant
             />
         </>
     );
