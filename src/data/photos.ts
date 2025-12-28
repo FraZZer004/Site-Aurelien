@@ -6178,6 +6178,63 @@ export const photos: Photo[] = [
     description: 'Illuminations Dijon 🎄',
   },
 
+    // Ciel Étoilé
+
+  {
+    id: 'ciel_etoile',
+    categoryId: 'shootings',
+    shootingId: 'divers',
+    src: '/assets/images/CielEtoile/DSC01247.jpg',
+    alt: 'Ciel Étoilé 🌌',
+    date: '26/12/2025',
+    description: 'Ciel Étoilé 🌌',
+  },
+  {
+    id: 'ciel_etoile',
+    categoryId: 'shootings',
+    shootingId: 'divers',
+    src: '/assets/images/CielEtoile/DSC01249.jpg',
+    alt: 'Ciel Étoilé 🌌',
+    date: '26/12/2025',
+    description: 'Ciel Étoilé 🌌',
+  },
+  {
+    id: 'ciel_etoile',
+    categoryId: 'shootings',
+    shootingId: 'divers',
+    src: '/assets/images/CielEtoile/DSC01250.jpg',
+    alt: 'Ciel Étoilé 🌌',
+    date: '26/12/2025',
+    description: 'Ciel Étoilé 🌌',
+  },
+  {
+    id: 'ciel_etoile',
+    categoryId: 'shootings',
+    shootingId: 'divers',
+    src: '/assets/images/CielEtoile/DSC01252.jpg',
+    alt: 'Ciel Étoilé 🌌',
+    date: '26/12/2025',
+    description: 'Ciel Étoilé 🌌',
+  },
+  {
+    id: 'ciel_etoile',
+    categoryId: 'shootings',
+    shootingId: 'divers',
+    src: '/assets/images/CielEtoile/DSC01254.jpg',
+    alt: 'Ciel Étoilé 🌌',
+    date: '26/12/2025',
+    description: 'Ciel Étoilé 🌌',
+  },
+  {
+    id: 'ciel_etoile',
+    categoryId: 'shootings',
+    shootingId: 'divers',
+    src: '/assets/images/CielEtoile/DSC01256.jpg',
+    alt: 'Ciel Étoilé 🌌',
+    date: '26/12/2025',
+    description: 'Ciel Étoilé 🌌',
+  },
+
   // Soon...
 
     {
