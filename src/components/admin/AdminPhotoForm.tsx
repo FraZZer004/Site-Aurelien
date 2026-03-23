@@ -88,6 +88,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   const [subEventId, setSubEventId] = useState('');
 
   /* ── Shared metadata ── */
+  const [sharedTitle, setSharedTitle] = useState(''); // groupe toutes les photos ensemble
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [brand, setBrand] = useState('');
@@ -181,15 +182,19 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         setProgress(`Upload ${i + 1} / ${entries.length} — ${entry.file.name}`);
         const src = await uploadOne(entry);
 
+        // Shared title groups all photos under the same block in the gallery detail page.
+        // Falls back to per-photo title (filename) if no shared title is set.
+        const resolvedTitle = isNewSection && i === 0
+          ? newSectionName
+          : (sharedTitle || entry.title || nameWithoutExt(entry.file));
+
         const photo: Partial<Photo> & Record<string, unknown> = {
           id: `${categoryId}-${finalSectionId}-${Date.now()}-${i}`,
           categoryId,
           src,
-          // First photo = preview when creating a new section
-          ...(isNewSection && i === 0
-            ? { isPreview: true, alt: newSectionName, title: newSectionName }
-            : { alt: entry.title || nameWithoutExt(entry.file), title: entry.title || undefined }
-          ),
+          alt: resolvedTitle,
+          title: resolvedTitle,
+          ...(isNewSection && i === 0 ? { isPreview: true } : {}),
           date: date || new Date().toLocaleDateString('fr-FR'),
           description: description || '',
           brand: brand || undefined,
@@ -222,6 +227,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       // Reset
       entries.forEach((e) => URL.revokeObjectURL(e.preview));
       setEntries([]);
+      setSharedTitle('');
       setDate('');
       setDescription('');
       setBrand('');
@@ -302,6 +308,26 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
             placeholder="Sous-catégorie (optionnel, ex: stand-bugatti)"
             className="mt-2 w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
           />
+        )}
+      </div>
+
+      {/* ── Titre du sujet (groupe toutes les photos ensemble) ── */}
+      <div>
+        <label className="block text-sm text-gray-400 mb-1">
+          Titre du sujet
+          <span className="text-gray-600 text-xs ml-2">— regroupe toutes les photos sous le même bloc</span>
+        </label>
+        <input
+          type="text"
+          value={sharedTitle}
+          onChange={(e) => setSharedTitle(e.target.value)}
+          placeholder={categoryId === 'shootings' ? 'ex: Ferrari 488 GTB' : categoryId === 'events' ? 'ex: Bugatti Veyron' : 'ex: Titre commun'}
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400"
+        />
+        {sharedTitle && (
+          <p className="text-xs text-yellow-400/70 mt-1">
+            Toutes les photos auront le titre "{sharedTitle}" → elles seront dans le même bloc.
+          </p>
         )}
       </div>
 
