@@ -1,5 +1,4 @@
 // src/data/searchIndex.ts
-import { photos } from './photos';
 import type { Photo } from '../types';
 
 export interface SearchItem {
@@ -33,7 +32,7 @@ const getBasePathForPhoto = (photo: Photo): string => {
     }
 };
 
-export const searchItems: SearchItem[] = photos.map((photo) => {
+export const buildSearchItems = (photos: Photo[]): SearchItem[] => photos.map((photo) => {
     const title =
         photo.title ||
         photo.alt ||

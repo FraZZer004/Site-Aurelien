@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 
 const ShootingGalleryPage: React.FC = () => {
     const navigate = useNavigate();
+    const photos = usePhotos();
 
     // 🔹 Regrouper par shootingId et ne garder qu'UNE carte par voiture
     const shootingPreviews = React.useMemo(() => {
@@ -29,7 +30,7 @@ const ShootingGalleryPage: React.FC = () => {
         });
 
         return Array.from(shootingMap.values());
-    }, []);
+    }, [photos]);
 
     return (
         <div className="py-20 px-6 bg-white dark:bg-black min-h-screen">

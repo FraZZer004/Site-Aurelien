@@ -1,8 +1,9 @@
 import React from 'react';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import MasonryGrid from './MasonryGrid';
 
 const AffichesGalleryPage: React.FC = () => {
+    const photos = usePhotos();
     // Récupérer toutes les affiches
     const affichesPhotos = photos.filter((p) => p.categoryId === 'affiches');
 

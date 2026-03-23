@@ -13,34 +13,51 @@ import DrawingGalleryPage from './components/Portfolio/DrawingGalleryPage';
 import DrawingDetailPage from './components/Portfolio/DrawingDetailPage';
 import AffichesGalleryPage from './components/Portfolio/AffichesGalleryPage';
 import AfficheDetailPage from './components/Portfolio/AfficheDetailPage';
+import AdminPage from './pages/AdminPage';
 import { ThemeProvider } from './context/ThemeContext';
-import BackToTopButton from "./components/UI/BackToTopButton";
-
+import { PhotosProvider } from './context/PhotosContext';
+import { AdminAuthProvider } from './context/AdminAuthContext';
+import BackToTopButton from './components/UI/BackToTopButton';
 
 function App() {
   return (
-      <ThemeProvider>
-        <Router>
-          <Layout>
+    <ThemeProvider>
+      <PhotosProvider>
+        <AdminAuthProvider>
+          <Router>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/portfolio" element={<PortfolioPage />} />
-              <Route path="/portfolio/events" element={<EventGalleryPage />} />
-              <Route path="/portfolio/events/:eventId" element={<EventDetailPage />} />
-              <Route path="/portfolio/shootings" element={<ShootingGalleryPage />} />
-              <Route path="/portfolio/shootings/:shootingId" element={<ShootingDetailPage />} />
-              <Route path="/portfolio/art" element={<ArtGalleryPage />} />
-              <Route path="/portfolio/art/:artId" element={<ArtDetailPage />} />
-              <Route path="/portfolio/drawings" element={<DrawingGalleryPage />} />
-              <Route path="/portfolio/drawings/:drawingId" element={<DrawingDetailPage />} />
-              <Route path="/portfolio/affiches" element={<AffichesGalleryPage />} />
-              <Route path="/portfolio/affiches/:afficheId" element={<AfficheDetailPage />} />
+              {/* Admin — own layout, no sidebar */}
+              <Route path="/admin" element={<AdminPage />} />
+
+              {/* Public site */}
+              <Route
+                path="/*"
+                element={
+                  <Layout>
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/portfolio" element={<PortfolioPage />} />
+                      <Route path="/portfolio/events" element={<EventGalleryPage />} />
+                      <Route path="/portfolio/events/:eventId" element={<EventDetailPage />} />
+                      <Route path="/portfolio/shootings" element={<ShootingGalleryPage />} />
+                      <Route path="/portfolio/shootings/:shootingId" element={<ShootingDetailPage />} />
+                      <Route path="/portfolio/art" element={<ArtGalleryPage />} />
+                      <Route path="/portfolio/art/:artId" element={<ArtDetailPage />} />
+                      <Route path="/portfolio/drawings" element={<DrawingGalleryPage />} />
+                      <Route path="/portfolio/drawings/:drawingId" element={<DrawingDetailPage />} />
+                      <Route path="/portfolio/affiches" element={<AffichesGalleryPage />} />
+                      <Route path="/portfolio/affiches/:afficheId" element={<AfficheDetailPage />} />
+                    </Routes>
+                  </Layout>
+                }
+              />
             </Routes>
-          </Layout>
-        </Router>
-          <BackToTopButton />
-      </ThemeProvider>
+            <BackToTopButton />
+          </Router>
+        </AdminAuthProvider>
+      </PhotosProvider>
+    </ThemeProvider>
   );
 }
 

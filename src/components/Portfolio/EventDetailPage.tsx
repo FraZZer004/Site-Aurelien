@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import MasonryGrid from './MasonryGrid';
 import { Photo } from '../../types';
 
@@ -11,6 +11,7 @@ type ColorFilter = 'all' | string;
 const EventDetailPage: React.FC = () => {
     const { eventId } = useParams<{ eventId: string }>();
     const navigate = useNavigate();
+    const photos = usePhotos();
 
     // Photo "preview" de l'évènement pour le header
     const eventPreview = photos.find(

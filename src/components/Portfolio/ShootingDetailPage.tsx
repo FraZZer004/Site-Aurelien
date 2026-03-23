@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import { Photo } from '../../types';
 import PhotoCard from './PhotoCard';
 
@@ -18,6 +18,7 @@ interface ShootingGroup {
 
 const ShootingDetailPage: React.FC = () => {
     const { shootingId } = useParams<{ shootingId: string }>();
+    const photos = usePhotos();
     const navigate = useNavigate();
 
     // Preview du shooting pour le header (affiche de la section auto/moto/divers)

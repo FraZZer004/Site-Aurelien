@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 
 type SortOption = 'date-desc' | 'date-asc' | 'name-asc' | 'name-desc';
 
@@ -17,10 +17,10 @@ interface EventPreview {
  * On construit la liste des évènements à partir des photos
  * de catégorie "events" qui ont isPreview = true.
  */
-const buildEventPreviews = (): EventPreview[] => {
-    const eventPreviews = photos.filter(
+const buildEventPreviews = (photos: EventPreview[]): EventPreview[] => {
+    const eventPreviews = (photos as any[]).filter(
         (p) => p.categoryId === 'events' && p.isPreview
-    ) as any[];
+    );
 
     return eventPreviews.map((p) => ({
         eventId: p.eventId as string,
@@ -56,9 +56,10 @@ const getDateValue = (dateStr?: string): number => {
 
 const EventGalleryPage: React.FC = () => {
     const navigate = useNavigate();
+    const photos = usePhotos();
     const [sortOption, setSortOption] = React.useState<SortOption>('date-desc');
 
-    const events = React.useMemo(() => buildEventPreviews(), []);
+    const events = React.useMemo(() => buildEventPreviews(photos as any), [photos]);
     const eventsCount = events.length;
 
     const sortedEvents = React.useMemo(() => {

@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import { ArrowLeft } from 'lucide-react';
 import CarouselBlock from './CarouselBlock';
 
 const DrawingDetailPage: React.FC = () => {
   const { drawingId } = useParams<{ drawingId: string }>();
   const navigate = useNavigate();
-  
+  const photos = usePhotos();
+
   // Get drawing preview for title and description
   const drawingPreview = photos.find(
     p => p.categoryId === 'drawings' && 

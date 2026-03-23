@@ -1,12 +1,13 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import { ArrowLeft } from 'lucide-react';
 import MasonryGrid from './MasonryGrid';
 
 const AfficheDetailPage: React.FC = () => {
     const { eventId } = useParams<{ eventId: string }>();
     const navigate = useNavigate();
+    const photos = usePhotos();
 
     // Get affiche preview for title and description
     const affichePreview = photos.find(

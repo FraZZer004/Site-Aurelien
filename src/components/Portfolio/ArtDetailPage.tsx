@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import { ArrowLeft } from 'lucide-react';
 import CarouselBlock from './CarouselBlock';
 
 const ArtDetailPage: React.FC = () => {
   const { artId } = useParams<{ artId: string }>();
   const navigate = useNavigate();
-  
+  const photos = usePhotos();
+
   // Get art preview for title and description
   const artPreview = photos.find(
     p => p.categoryId === 'art' && 

@@ -1,8 +1,9 @@
 import React from 'react';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import PhotoCard from './PhotoCard';
 
 const DrawingGalleryPage: React.FC = () => {
+    const photos = usePhotos();
     // Get preview photos for drawings
     const drawingPreviews = photos.filter(
         (p) => p.categoryId === 'drawings' && p.isPreview

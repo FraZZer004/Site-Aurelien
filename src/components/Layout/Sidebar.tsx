@@ -16,7 +16,7 @@ import {
 import { menuItems } from '../../data/menuItems';
 import { useTheme } from '../../context/ThemeContext';
 import { useNavigate } from 'react-router-dom';
-import { photos } from '../../data/photos';
+import { usePhotos } from '../../context/PhotosContext';
 import { Photo } from '../../types';
 import Lightbox from '../Portfolio/Lightbox';
 
@@ -41,6 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                                          }) => {
     const { isDarkMode, toggleDarkMode } = useTheme();
     const navigate = useNavigate();
+    const photos = usePhotos();
     const [expandedMenu, setExpandedMenu] = React.useState<string | null>(
         currentPath.startsWith('/portfolio') ? 'portfolio' : null
     );
@@ -123,7 +124,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         }
 
         setSearchResults(Array.from(map.values()).slice(0, 8));
-    }, [searchTerm]);
+    }, [searchTerm, photos]);
 
     // Quand on clique sur un résultat → ouvrir la première image correspondante en Lightbox
     const handleSearchSelect = (result: SearchResult) => {
