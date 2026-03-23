@@ -86,7 +86,6 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   const [imagePreview, setImagePreview] = useState('');
   const [imageSrc, setImageSrc] = useState(''); // URL manuelle
 
-  const [alt, setAlt] = useState('');
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
@@ -165,20 +164,19 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       setError('Ajoute une image ou une URL.');
       return;
     }
-    if (!alt) {
-      setError('Le texte alternatif (alt) est requis.');
-      return;
-    }
 
     setLoading(true);
     try {
       const src = await uploadImage();
 
+      // Derive alt from title, or filename, or section name
+      const derivedAlt = title || imageFile?.name.replace(/\.[^.]+$/, '') || finalSectionId;
+
       const photo: Partial<Photo> & Record<string, unknown> = {
         id: `${categoryId}-${finalSectionId}-${Date.now()}`,
         categoryId,
         src,
-        alt,
+        alt: derivedAlt,
         title: title || undefined,
         date: date || new Date().toLocaleDateString('fr-FR'),
         description: description || '',
@@ -242,7 +240,6 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       setImageFile(null);
       setImagePreview('');
       setImageSrc('');
-      setAlt('');
       setTitle('');
       setDate('');
       setDescription('');
@@ -423,20 +420,6 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
 
       {/* Champs texte */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="sm:col-span-2">
-          <label className="block text-xs text-gray-500 mb-1">
-            Texte alternatif <span className="text-red-400">*</span>
-          </label>
-          <input
-            type="text"
-            value={alt}
-            onChange={(e) => setAlt(e.target.value)}
-            required
-            placeholder="Description courte de la photo"
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
-          />
-        </div>
-
         <div>
           <label className="block text-xs text-gray-500 mb-1">Titre</label>
           <input
