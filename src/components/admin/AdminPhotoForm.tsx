@@ -176,21 +176,20 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
     try {
       const photos: Array<Partial<Photo> & Record<string, unknown>> = [];
 
-      // If new section, build the preview photo from the first image
-      let firstSrc: string | null = null;
-
       for (let i = 0; i < entries.length; i++) {
         const entry = entries[i];
         setProgress(`Upload ${i + 1} / ${entries.length} — ${entry.file.name}`);
         const src = await uploadOne(entry);
-        if (i === 0) firstSrc = src;
 
         const photo: Partial<Photo> & Record<string, unknown> = {
           id: `${categoryId}-${finalSectionId}-${Date.now()}-${i}`,
           categoryId,
           src,
-          alt: entry.title || nameWithoutExt(entry.file),
-          title: entry.title || undefined,
+          // First photo = preview when creating a new section
+          ...(isNewSection && i === 0
+            ? { isPreview: true, alt: newSectionName, title: newSectionName }
+            : { alt: entry.title || nameWithoutExt(entry.file), title: entry.title || undefined }
+          ),
           date: date || new Date().toLocaleDateString('fr-FR'),
           description: description || '',
           brand: brand || undefined,
@@ -206,23 +205,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         photos.push(photo);
       }
 
-      // Prepend preview photo if creating a new section
-      const payload: Array<Partial<Photo> & Record<string, unknown>> = [];
-      if (isNewSection && firstSrc) {
-        const preview: Partial<Photo> & Record<string, unknown> = {
-          id: `${categoryId}-preview-${finalSectionId}-${Date.now()}`,
-          categoryId,
-          src: firstSrc,
-          alt: newSectionName,
-          title: newSectionName,
-          date: date || new Date().toLocaleDateString('fr-FR'),
-          description: description || '',
-          isPreview: true,
-        };
-        preview[cat.sectionKey] = finalSectionId;
-        payload.push(preview);
-      }
-      payload.push(...photos);
+      const payload = photos;
 
       setProgress('Sauvegarde…');
       const res = await fetch('/api/admin/content', {
