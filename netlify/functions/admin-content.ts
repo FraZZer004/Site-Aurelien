@@ -1,14 +1,19 @@
 /**
  * /api/admin/content  (GET | POST | DELETE)
  * Protected — requires Bearer token.
- *
- * GET    → { additions: Photo[], deletions: string[] }
- * POST   → body: Photo | Photo[]  → adds to "additions" list
- * DELETE → body: { id: string }   → adds ID to "deletions" list and removes from additions
  */
 import type { Config } from '@netlify/functions';
 import { getStore } from '@netlify/blobs';
 import { isAuthenticated, jsonResponse, errorResponse } from './_utils';
+
+async function getJSON<T>(store: ReturnType<typeof getStore>, key: string, fallback: T): Promise<T> {
+  const value = await store.get(key, { type: 'json' }) as T | null;
+  return value ?? fallback;
+}
+
+async function setJSON(store: ReturnType<typeof getStore>, key: string, value: unknown): Promise<void> {
+  await store.set(key, JSON.stringify(value));
+}
 
 export default async function handler(req: Request): Promise<Response> {
   try {
@@ -18,8 +23,8 @@ export default async function handler(req: Request): Promise<Response> {
 
     // ----- GET ---------------------------------------------------------------
     if (req.method === 'GET') {
-      const additions = (await store.getJSON('additions')) as unknown[] | null ?? [];
-      const deletions = (await store.getJSON('deletions')) as string[] | null ?? [];
+      const additions = await getJSON<unknown[]>(store, 'additions', []);
+      const deletions = await getJSON<string[]>(store, 'deletions', []);
       return jsonResponse({ additions, deletions });
     }
 
@@ -28,9 +33,9 @@ export default async function handler(req: Request): Promise<Response> {
       const body = await req.json();
       const newPhotos: unknown[] = Array.isArray(body) ? body : [body];
 
-      const current = (await store.getJSON('additions')) as unknown[] | null ?? [];
+      const current = await getJSON<unknown[]>(store, 'additions', []);
       const updated = [...current, ...newPhotos];
-      await store.setJSON('additions', updated);
+      await setJSON(store, 'additions', updated);
 
       return jsonResponse({ success: true, total: updated.length });
     }
@@ -40,14 +45,14 @@ export default async function handler(req: Request): Promise<Response> {
       const { id } = (await req.json()) as { id: string };
       if (!id) return errorResponse('id manquant', 400);
 
-      const deletions = (await store.getJSON('deletions')) as string[] | null ?? [];
+      const deletions = await getJSON<string[]>(store, 'deletions', []);
       if (!deletions.includes(id)) {
-        await store.setJSON('deletions', [...deletions, id]);
+        await setJSON(store, 'deletions', [...deletions, id]);
       }
 
-      const additions = (await store.getJSON('additions')) as Array<{ id: string }> | null ?? [];
+      const additions = await getJSON<Array<{ id: string }>>(store, 'additions', []);
       const filtered = additions.filter((p) => p.id !== id);
-      await store.setJSON('additions', filtered);
+      await setJSON(store, 'additions', filtered);
 
       return jsonResponse({ success: true });
     }
