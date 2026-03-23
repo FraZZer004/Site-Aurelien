@@ -142,7 +142,10 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         data: base64,
       }),
     });
-    if (!res.ok) throw new Error('Échec de l\'upload image');
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      throw new Error(`Upload échoué (${res.status}): ${body || 'pas de détail'}`);
+    }
     const { url } = await res.json() as { url: string };
     return url;
   };
@@ -215,7 +218,10 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
           },
           body: JSON.stringify([previewPhoto, photo]),
         });
-        if (!res.ok) throw new Error('Erreur sauvegarde');
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`Sauvegarde échouée (${res.status}): ${body || 'pas de détail'}`);
+        }
       } else {
         const res = await fetch('/api/admin/content', {
           method: 'POST',
@@ -225,7 +231,10 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
           },
           body: JSON.stringify(photo),
         });
-        if (!res.ok) throw new Error('Erreur sauvegarde');
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`Sauvegarde échouée (${res.status}): ${body || 'pas de détail'}`);
+        }
       }
 
       setSuccess('Photo ajoutée avec succès !');

@@ -1,7 +1,8 @@
 /**
  * GET /api/images/:key
  * Public — serves images stored in Netlify Blobs.
- * Long cache since images are content-addressed (key includes timestamp).
+ * Supports both Config-based routing (context.params.key)
+ * and redirect-based access (?key=...).
  */
 import type { Config, Context } from '@netlify/functions';
 import { getStore } from '@netlify/blobs';
@@ -9,7 +10,8 @@ import { getStore } from '@netlify/blobs';
 export default async function handler(req: Request, context: Context): Promise<Response> {
   if (req.method !== 'GET') return new Response('Method not allowed', { status: 405 });
 
-  const key = context.params['key'];
+  // Support both Config-based routing (:key param) and redirect-based (?key=...)
+  const key = context.params?.['key'] ?? new URL(req.url).searchParams.get('key') ?? '';
   if (!key) return new Response('Not found', { status: 404 });
 
   try {
@@ -27,7 +29,8 @@ export default async function handler(req: Request, context: Context): Promise<R
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
-  } catch {
+  } catch (err: unknown) {
+    console.error('[admin-image] Error:', err);
     return new Response('Not found', { status: 404 });
   }
 }

@@ -1,1 +1,9 @@
-/* /index.html 200
+# API routes → Netlify Functions (fallback si Config-based routing non actif)
+/api/content              /.netlify/functions/content              200
+/api/admin/auth           /.netlify/functions/admin-auth           200
+/api/admin/content        /.netlify/functions/admin-content        200
+/api/admin/upload         /.netlify/functions/admin-upload         200
+/api/images/*             /.netlify/functions/admin-image?key=:splat 200
+
+# SPA fallback
+/*                        /index.html                              200
