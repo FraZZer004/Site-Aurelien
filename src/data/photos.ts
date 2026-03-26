@@ -7309,7 +7309,7 @@ export const photos: Photo[] = [
   {
     id: 'affiche-2',
     categoryId: 'affiches',
-    afficheId: 'revuelto',
+    afficheId: 'carrera',
     src: '/assets/images/Affiches/carrera_GT.jpg',
     alt: 'Affiche Porsche 918 Spyder Carrera GT',
     title: 'Affiche Porsche 918 Spyder Carrera GT',
@@ -7319,7 +7319,7 @@ export const photos: Photo[] = [
   {
     id: 'affiche-3',
     categoryId: 'affiches',
-    afficheId: 'revuelto',
+    afficheId: 'impreza',
     src: '/assets/images/Affiches/impreza.jpg',
     alt: 'Affiche Subaru Impreza',
     title: 'Affiche Subaru Impreza',
