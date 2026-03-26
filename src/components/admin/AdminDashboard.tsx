@@ -27,6 +27,16 @@ interface Section {
   preview?: Photo;
 }
 
+function groupByTitle(photos: Photo[]): Array<{ key: string; photos: Photo[] }> {
+  const map = new Map<string, Photo[]>();
+  for (const p of photos) {
+    const key = p.title?.trim() || '';
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(p);
+  }
+  return Array.from(map.entries()).map(([key, ps]) => ({ key: key || 'Sans titre', photos: ps }));
+}
+
 const AdminDashboard: React.FC = () => {
   const { logout } = useAdminAuth();
   const photos = usePhotos();
@@ -229,23 +239,40 @@ const AdminDashboard: React.FC = () => {
                 </button>
 
                 {/* Section photos */}
-                {isExpanded && (
-                  <div className="border-t border-white/10 p-4">
-                    <AdminPhotoList
-                      photos={section.photos}
-                      onDeleted={handleDeleted}
-                    />
-                    {section.preview && (
-                      <div className="mt-4 pt-4 border-t border-white/10">
-                        <p className="text-xs text-gray-600 mb-2">Photo d'aperçu (preview)</p>
-                        <AdminPhotoList
-                          photos={[section.preview]}
-                          onDeleted={handleDeleted}
-                        />
-                      </div>
-                    )}
-                  </div>
-                )}
+                {isExpanded && (() => {
+                  const groups = groupByTitle(section.photos);
+                  const hasMultipleGroups = groups.length > 1 || (groups.length === 1 && groups[0].key !== 'Sans titre');
+                  return (
+                    <div className="border-t border-white/10 p-4 space-y-8">
+                      {hasMultipleGroups ? (
+                        groups.map((group) => (
+                          <div key={group.key}>
+                            {/* Shooting group header */}
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="h-px flex-1 bg-white/10" />
+                              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/30">
+                                <span className="text-sm font-medium text-yellow-300">{group.key}</span>
+                                <span className="text-xs text-yellow-400/60">
+                                  {group.photos.length} photo{group.photos.length > 1 ? 's' : ''}
+                                </span>
+                              </div>
+                              <div className="h-px flex-1 bg-white/10" />
+                            </div>
+                            <AdminPhotoList photos={group.photos} onDeleted={handleDeleted} />
+                          </div>
+                        ))
+                      ) : (
+                        <AdminPhotoList photos={section.photos} onDeleted={handleDeleted} />
+                      )}
+                      {section.preview && (
+                        <div className="pt-4 border-t border-white/10">
+                          <p className="text-xs text-gray-600 mb-2">Photo d'aperçu (preview)</p>
+                          <AdminPhotoList photos={[section.preview]} onDeleted={handleDeleted} />
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             );
           })}
