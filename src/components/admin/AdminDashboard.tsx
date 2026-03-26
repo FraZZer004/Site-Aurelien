@@ -293,34 +293,59 @@ const AdminDashboard: React.FC = () => {
                 className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
               >
                 {/* Section header */}
-                <button
-                  onClick={() => toggleSection(section.id)}
-                  className="w-full flex items-center gap-4 p-4 hover:bg-white/5 transition-colors text-left"
-                >
-                  {/* Preview thumbnail */}
-                  {section.preview && (
-                    <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-                      <img
-                        src={section.preview.src}
-                        alt={section.preview.alt}
-                        className="w-full h-full object-cover"
-                      />
+                <div className="flex items-center">
+                  <button
+                    onClick={() => toggleSection(section.id)}
+                    className="flex-1 flex items-center gap-4 p-4 hover:bg-white/5 transition-colors text-left min-w-0"
+                  >
+                    {/* Preview thumbnail */}
+                    {section.preview && (
+                      <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                        <img
+                          src={section.preview.src}
+                          alt={section.preview.alt}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-light truncate">{section.label}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        ID: <span className="font-mono text-gray-400">{section.id}</span>
+                        {' · '}
+                        {section.photos.length} photo{section.photos.length !== 1 ? 's' : ''}
+                      </p>
                     </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white font-light truncate">{section.label}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">
-                      ID: <span className="font-mono text-gray-400">{section.id}</span>
-                      {' · '}
-                      {section.photos.length} photo{section.photos.length !== 1 ? 's' : ''}
-                    </p>
+                    {isExpanded ? (
+                      <ChevronDown className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                    )}
+                  </button>
+                  {/* Section-level actions */}
+                  <div className="flex items-center gap-1 pr-3 flex-shrink-0">
+                    <button
+                      onClick={() => openEdit({ key: section.label, photos: section.photos })}
+                      className="p-2 rounded-lg text-gray-600 hover:text-yellow-400 hover:bg-white/5 transition-colors"
+                      title="Modifier toutes les photos de cette section"
+                    >
+                      <Pencil className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => setConfirmDeleteGroup({
+                        key: section.label,
+                        photos: [
+                          ...section.photos,
+                          ...(section.preview ? [section.preview] : []),
+                        ],
+                      })}
+                      className="p-2 rounded-lg text-gray-600 hover:text-red-400 hover:bg-white/5 transition-colors"
+                      title="Supprimer toute la section"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
                   </div>
-                  {isExpanded ? (
-                    <ChevronDown className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                  ) : (
-                    <ChevronRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                  )}
-                </button>
+                </div>
 
                 {/* Section photos */}
                 {isExpanded && (() => {
