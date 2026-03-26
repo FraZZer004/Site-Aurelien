@@ -40,18 +40,32 @@ export default async function handler(req: Request): Promise<Response> {
       return jsonResponse({ success: true, total: updated.length });
     }
 
-    // ----- DELETE (soft-delete by id) ----------------------------------------
+    // ----- PATCH (update fields for a list of photo ids) ---------------------
+    if (req.method === 'PATCH') {
+      const { ids, patch } = (await req.json()) as { ids: string[]; patch: Record<string, unknown> };
+      if (!ids?.length) return errorResponse('ids manquants', 400);
+
+      const additions = await getJSON<Array<Record<string, unknown>>>(store, 'additions', []);
+      const updated = additions.map((p) =>
+        ids.includes(p.id as string) ? { ...p, ...patch } : p
+      );
+      await setJSON(store, 'additions', updated);
+
+      return jsonResponse({ success: true, updated: ids.length });
+    }
+
+    // ----- DELETE (soft-delete by id or ids[]) --------------------------------
     if (req.method === 'DELETE') {
-      const { id } = (await req.json()) as { id: string };
-      if (!id) return errorResponse('id manquant', 400);
+      const body = (await req.json()) as { id?: string; ids?: string[] };
+      const ids: string[] = body.ids ?? (body.id ? [body.id] : []);
+      if (!ids.length) return errorResponse('id(s) manquant(s)', 400);
 
       const deletions = await getJSON<string[]>(store, 'deletions', []);
-      if (!deletions.includes(id)) {
-        await setJSON(store, 'deletions', [...deletions, id]);
-      }
+      const newIds = ids.filter((id) => !deletions.includes(id));
+      if (newIds.length) await setJSON(store, 'deletions', [...deletions, ...newIds]);
 
       const additions = await getJSON<Array<{ id: string }>>(store, 'additions', []);
-      const filtered = additions.filter((p) => p.id !== id);
+      const filtered = additions.filter((p) => !ids.includes(p.id));
       await setJSON(store, 'additions', filtered);
 
       return jsonResponse({ success: true });

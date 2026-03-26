@@ -3,7 +3,7 @@
  * Main admin interface: category tabs, section list, photo management, add form.
  */
 import React, { useState, useCallback } from 'react';
-import { LogOut, Plus, ChevronDown, ChevronRight, RefreshCw } from 'lucide-react';
+import { LogOut, Plus, ChevronDown, ChevronRight, RefreshCw, Pencil, Trash2, X, Loader2 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import { usePhotos, useRefreshPhotos } from '../../context/PhotosContext';
 import AdminPhotoList from './AdminPhotoList';
@@ -42,14 +42,92 @@ function groupByTitle(photos: Photo[]): Array<{ key: string; photos: Photo[] }> 
   return multi;
 }
 
+interface GroupRef { key: string; photos: Photo[] }
+
+interface EditForm {
+  title: string; date: string; description: string;
+  brand: string; color: string; keywords: string;
+}
+
 const AdminDashboard: React.FC = () => {
-  const { logout } = useAdminAuth();
+  const { logout, token } = useAdminAuth();
   const photos = usePhotos();
   const refresh = useRefreshPhotos();
 
   const [activeCat, setActiveCat] = useState<CategoryId>('events');
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
   const [showAddForm, setShowAddForm] = useState(false);
+
+  // Group edit modal
+  const [editingGroup, setEditingGroup] = useState<GroupRef | null>(null);
+  const [editForm, setEditForm] = useState<EditForm>({ title: '', date: '', description: '', brand: '', color: '', keywords: '' });
+  // Group delete confirmation
+  const [confirmDeleteGroup, setConfirmDeleteGroup] = useState<GroupRef | null>(null);
+  const [groupActionLoading, setGroupActionLoading] = useState(false);
+
+  const openEdit = (group: GroupRef) => {
+    const first = group.photos[0];
+    setEditForm({
+      title: first?.title || group.key,
+      date: first?.date || '',
+      description: first?.description || '',
+      brand: first?.brand || '',
+      color: first?.color || '',
+      keywords: first?.keywords?.join(', ') || '',
+    });
+    setEditingGroup(group);
+  };
+
+  const handleSaveGroupEdit = async () => {
+    if (!editingGroup) return;
+    setGroupActionLoading(true);
+    try {
+      const ids = editingGroup.photos.map((p) => p.id);
+      const patch: Record<string, unknown> = {
+        title: editForm.title,
+        alt: editForm.title,
+        date: editForm.date,
+        description: editForm.description,
+        brand: editForm.brand || undefined,
+        color: editForm.color || undefined,
+        keywords: editForm.keywords
+          ? editForm.keywords.split(',').map((k) => k.trim()).filter(Boolean)
+          : undefined,
+      };
+      const res = await fetch('/api/admin/content', {
+        method: 'PATCH',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids, patch }),
+      });
+      if (!res.ok) throw new Error('Erreur lors de la mise à jour');
+      refresh();
+      setEditingGroup(null);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Erreur inconnue');
+    } finally {
+      setGroupActionLoading(false);
+    }
+  };
+
+  const handleDeleteGroup = async () => {
+    if (!confirmDeleteGroup) return;
+    setGroupActionLoading(true);
+    try {
+      const ids = confirmDeleteGroup.photos.map((p) => p.id);
+      const res = await fetch('/api/admin/content', {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids }),
+      });
+      if (!res.ok) throw new Error('Erreur lors de la suppression');
+      refresh();
+      setConfirmDeleteGroup(null);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Erreur inconnue');
+    } finally {
+      setGroupActionLoading(false);
+    }
+  };
 
   const cat = CATEGORIES.find((c) => c.id === activeCat)!;
 
@@ -107,6 +185,7 @@ const AdminDashboard: React.FC = () => {
   }, [refresh]);
 
   return (
+    <>
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
       <header className="border-b border-white/10 px-6 py-4 flex items-center justify-between">
@@ -260,6 +339,20 @@ const AdminDashboard: React.FC = () => {
                                 <span className="text-xs text-yellow-400/60">
                                   {group.photos.length} photo{group.photos.length > 1 ? 's' : ''}
                                 </span>
+                                <button
+                                  onClick={() => openEdit(group)}
+                                  className="ml-1 p-1 rounded-full hover:bg-white/10 text-yellow-400/50 hover:text-yellow-300 transition-colors"
+                                  title="Modifier le bloc"
+                                >
+                                  <Pencil className="w-3 h-3" />
+                                </button>
+                                <button
+                                  onClick={() => setConfirmDeleteGroup(group)}
+                                  className="p-1 rounded-full hover:bg-red-500/20 text-yellow-400/50 hover:text-red-400 transition-colors"
+                                  title="Supprimer le bloc"
+                                >
+                                  <Trash2 className="w-3 h-3" />
+                                </button>
                               </div>
                               <div className="h-px flex-1 bg-white/10" />
                             </div>
@@ -283,7 +376,119 @@ const AdminDashboard: React.FC = () => {
           })}
         </div>
       </div>
-    </div>
+    </div>{/* end min-h-screen */}
+
+    {/* ── Edit Group Modal ── */}
+    {editingGroup && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+        <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-md shadow-2xl">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+            <div>
+              <h3 className="text-base font-light text-white">Modifier le bloc</h3>
+              <p className="text-xs text-yellow-400/70 mt-0.5">
+                {editingGroup.key} · {editingGroup.photos.length} photo{editingGroup.photos.length > 1 ? 's' : ''}
+              </p>
+            </div>
+            <button onClick={() => setEditingGroup(null)} className="p-2 text-gray-500 hover:text-white rounded-lg hover:bg-white/5 transition-colors">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="p-6 space-y-4">
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">Titre du bloc</label>
+              <input type="text" value={editForm.title}
+                onChange={(e) => setEditForm((f) => ({ ...f, title: e.target.value }))}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">Date</label>
+                <input type="text" value={editForm.date} placeholder="16/05/2025"
+                  onChange={(e) => setEditForm((f) => ({ ...f, date: e.target.value }))}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">Marque</label>
+                <input type="text" value={editForm.brand} placeholder="Ferrari…"
+                  onChange={(e) => setEditForm((f) => ({ ...f, brand: e.target.value }))}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">Couleur</label>
+                <input type="text" value={editForm.color} placeholder="Rouge…"
+                  onChange={(e) => setEditForm((f) => ({ ...f, color: e.target.value }))}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">Mots-clés</label>
+                <input type="text" value={editForm.keywords} placeholder="GT3RS, Circuit…"
+                  onChange={(e) => setEditForm((f) => ({ ...f, keywords: e.target.value }))}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">Description</label>
+              <input type="text" value={editForm.description} placeholder="Courte description…"
+                onChange={(e) => setEditForm((f) => ({ ...f, description: e.target.value }))}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
+              />
+            </div>
+          </div>
+          <div className="flex gap-3 px-6 py-4 border-t border-white/10">
+            <button onClick={() => setEditingGroup(null)}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              Annuler
+            </button>
+            <button onClick={handleSaveGroupEdit} disabled={groupActionLoading}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm bg-yellow-400 text-black font-medium hover:bg-yellow-300 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+            >
+              {groupActionLoading && <Loader2 className="w-3 h-3 animate-spin" />}
+              Enregistrer
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* ── Delete Group Confirmation Modal ── */}
+    {confirmDeleteGroup && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+        <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-sm shadow-2xl">
+          <div className="p-6 text-center">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 mx-auto mb-4">
+              <Trash2 className="w-5 h-5 text-red-400" />
+            </div>
+            <h3 className="text-base font-light text-white mb-1">Supprimer le bloc</h3>
+            <p className="text-sm text-white font-medium mb-1">"{confirmDeleteGroup.key}"</p>
+            <p className="text-xs text-gray-500">
+              {confirmDeleteGroup.photos.length} photo{confirmDeleteGroup.photos.length > 1 ? 's' : ''} seront supprimées définitivement. Cette action est irréversible.
+            </p>
+          </div>
+          <div className="flex gap-3 px-6 py-4 border-t border-white/10">
+            <button onClick={() => setConfirmDeleteGroup(null)}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              Annuler
+            </button>
+            <button onClick={handleDeleteGroup} disabled={groupActionLoading}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm bg-red-500 text-white font-medium hover:bg-red-400 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+            >
+              {groupActionLoading && <Loader2 className="w-3 h-3 animate-spin" />}
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 
