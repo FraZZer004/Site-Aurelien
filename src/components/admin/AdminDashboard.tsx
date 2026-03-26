@@ -30,11 +30,16 @@ interface Section {
 function groupByTitle(photos: Photo[]): Array<{ key: string; photos: Photo[] }> {
   const map = new Map<string, Photo[]>();
   for (const p of photos) {
-    const key = p.title?.trim() || '';
+    const key = p.title?.trim() || p.alt?.trim() || 'Sans titre';
     if (!map.has(key)) map.set(key, []);
     map.get(key)!.push(p);
   }
-  return Array.from(map.entries()).map(([key, ps]) => ({ key: key || 'Sans titre', photos: ps }));
+  // Merge all 1-photo groups (unique filenames) into a single "Autres" bucket
+  const entries = Array.from(map.entries());
+  const multi = entries.filter(([, ps]) => ps.length > 1).map(([key, ps]) => ({ key, photos: ps }));
+  const solos = entries.filter(([, ps]) => ps.length === 1).flatMap(([, ps]) => ps);
+  if (solos.length > 0) multi.push({ key: 'Autres', photos: solos });
+  return multi;
 }
 
 const AdminDashboard: React.FC = () => {
@@ -241,7 +246,7 @@ const AdminDashboard: React.FC = () => {
                 {/* Section photos */}
                 {isExpanded && (() => {
                   const groups = groupByTitle(section.photos);
-                  const hasMultipleGroups = groups.length > 1 || (groups.length === 1 && groups[0].key !== 'Sans titre');
+                  const hasMultipleGroups = groups.length > 1;
                   return (
                     <div className="border-t border-white/10 p-4 space-y-8">
                       {hasMultipleGroups ? (
