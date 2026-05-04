@@ -40,9 +40,28 @@ export default async function handler(req: Request): Promise<Response> {
       return jsonResponse({ success: true, total: updated.length });
     }
 
-    // ----- PATCH (update fields for a list of photo ids) ---------------------
+    // ----- PATCH (update fields OR atomic cover swap) ------------------------
     if (req.method === 'PATCH') {
-      const { ids, patch } = (await req.json()) as { ids: string[]; patch: Record<string, unknown> };
+      const body = (await req.json()) as {
+        ids?: string[];
+        patch?: Record<string, unknown>;
+        setCover?: { newId: string; oldId?: string };
+      };
+
+      // Atomic cover swap — single read-modify-write to avoid race conditions
+      if (body.setCover) {
+        const { newId, oldId } = body.setCover;
+        const additions = await getJSON<Array<Record<string, unknown>>>(store, 'additions', []);
+        const updated = additions.map((p) => {
+          if (p.id === newId) return { ...p, isPreview: true };
+          if (oldId && p.id === oldId) return { ...p, isPreview: false };
+          return p;
+        });
+        await setJSON(store, 'additions', updated);
+        return jsonResponse({ success: true });
+      }
+
+      const { ids, patch } = body;
       if (!ids?.length) return errorResponse('ids manquants', 400);
 
       const additions = await getJSON<Array<Record<string, unknown>>>(store, 'additions', []);

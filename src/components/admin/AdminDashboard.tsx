@@ -117,57 +117,68 @@ const AdminDashboard: React.FC = () => {
     setCoverActionLoadingId(newCover.id);
     try {
       const additionIds = new Set(additions.map((a) => a.id));
+      const oldIsDynamic = currentPreview ? additionIds.has(currentPreview.id) : false;
+      const newIsDynamic = additionIds.has(newCover.id);
 
-      // Demote old cover if one exists
-      if (currentPreview) {
-        if (additionIds.has(currentPreview.id)) {
-          const r = await fetch('/api/admin/content', {
-            method: 'PATCH',
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ids: [currentPreview.id], patch: { isPreview: false } }),
-          });
-          if (!r.ok) throw new Error('Impossible de déclasser l\'ancienne couverture');
-        } else {
-          // Static cover → add a gallery copy (no isPreview), then soft-delete original
-          const galleryCopy = { ...currentPreview, id: `gallery-${currentPreview.id}-${Date.now()}`, isPreview: false };
-          const r1 = await fetch('/api/admin/content', {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify([galleryCopy]),
-          });
-          if (!r1.ok) throw new Error('Impossible de créer la copie galerie de l\'ancienne couverture');
-          const r2 = await fetch('/api/admin/content', {
-            method: 'DELETE',
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ids: [currentPreview.id] }),
-          });
-          if (!r2.ok) throw new Error('Impossible de cacher l\'ancienne couverture statique');
-        }
-      }
-
-      // Promote new cover
-      if (additionIds.has(newCover.id)) {
+      if (newIsDynamic && (!currentPreview || oldIsDynamic)) {
+        // Both dynamic (or no old cover) — atomic single read-modify-write, no race condition
         const r = await fetch('/api/admin/content', {
           method: 'PATCH',
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ids: [newCover.id], patch: { isPreview: true } }),
+          body: JSON.stringify({ setCover: { newId: newCover.id, oldId: currentPreview?.id } }),
         });
-        if (!r.ok) throw new Error('Impossible de définir la nouvelle couverture');
+        if (!r.ok) throw new Error('Impossible de changer la couverture');
       } else {
-        // Static gallery photo → create a dynamic copy as cover, soft-delete original
-        const newEntry = { ...newCover, id: `cover-${newCover.id}-${Date.now()}`, isPreview: true };
-        const r1 = await fetch('/api/admin/content', {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify([newEntry]),
-        });
-        if (!r1.ok) throw new Error('Impossible de créer la nouvelle couverture');
-        const r2 = await fetch('/api/admin/content', {
-          method: 'DELETE',
-          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ids: [newCover.id] }),
-        });
-        if (!r2.ok) throw new Error('Impossible de supprimer l\'original de la galerie');
+        // At least one photo is static — sequential operations, each targeting a single photo
+        if (currentPreview) {
+          if (oldIsDynamic) {
+            const r = await fetch('/api/admin/content', {
+              method: 'PATCH',
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ ids: [currentPreview.id], patch: { isPreview: false } }),
+            });
+            if (!r.ok) throw new Error("Impossible de déclasser l'ancienne couverture");
+          } else {
+            // Static old cover → gallery copy + soft-delete
+            const galleryCopy = { ...currentPreview, id: `gallery-${currentPreview.id}-${Date.now()}`, isPreview: false };
+            const r1 = await fetch('/api/admin/content', {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify([galleryCopy]),
+            });
+            if (!r1.ok) throw new Error("Impossible de créer la copie galerie de l'ancienne couverture");
+            const r2 = await fetch('/api/admin/content', {
+              method: 'DELETE',
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ ids: [currentPreview.id] }),
+            });
+            if (!r2.ok) throw new Error("Impossible de cacher l'ancienne couverture statique");
+          }
+        }
+
+        if (newIsDynamic) {
+          const r = await fetch('/api/admin/content', {
+            method: 'PATCH',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ids: [newCover.id], patch: { isPreview: true } }),
+          });
+          if (!r.ok) throw new Error('Impossible de définir la nouvelle couverture');
+        } else {
+          // Static new cover → dynamic cover copy + soft-delete original
+          const newEntry = { ...newCover, id: `cover-${newCover.id}-${Date.now()}`, isPreview: true };
+          const r1 = await fetch('/api/admin/content', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify([newEntry]),
+          });
+          if (!r1.ok) throw new Error('Impossible de créer la nouvelle couverture');
+          const r2 = await fetch('/api/admin/content', {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ids: [newCover.id] }),
+          });
+          if (!r2.ok) throw new Error("Impossible de supprimer l'original de la galerie");
+        }
       }
 
       refresh();
