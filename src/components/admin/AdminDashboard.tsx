@@ -64,6 +64,7 @@ const AdminDashboard: React.FC = () => {
   // Group delete confirmation
   const [confirmDeleteGroup, setConfirmDeleteGroup] = useState<GroupRef | null>(null);
   const [groupActionLoading, setGroupActionLoading] = useState(false);
+  const [groupActionError, setGroupActionError] = useState<string | null>(null);
 
   const openEdit = (group: GroupRef) => {
     const first = group.photos[0];
@@ -112,18 +113,27 @@ const AdminDashboard: React.FC = () => {
   const handleDeleteGroup = async () => {
     if (!confirmDeleteGroup) return;
     setGroupActionLoading(true);
+    setGroupActionError(null);
     try {
-      const ids = confirmDeleteGroup.photos.map((p) => p.id);
+      const ids = confirmDeleteGroup.photos.map((p) => p.id).filter(Boolean);
+      if (!ids.length) throw new Error('Aucun identifiant valide trouvé pour ces photos');
       const res = await fetch('/api/admin/content', {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ ids }),
       });
-      if (!res.ok) throw new Error('Erreur lors de la suppression');
+      if (!res.ok) {
+        let detail = `HTTP ${res.status}`;
+        try {
+          const body = await res.json();
+          if (body?.error) detail = body.error;
+        } catch { /* ignore */ }
+        throw new Error(detail);
+      }
       refresh();
       setConfirmDeleteGroup(null);
     } catch (err) {
-      alert(err instanceof Error ? err.message : 'Erreur inconnue');
+      setGroupActionError(err instanceof Error ? err.message : 'Erreur inconnue');
     } finally {
       setGroupActionLoading(false);
     }
@@ -496,9 +506,14 @@ const AdminDashboard: React.FC = () => {
             <p className="text-xs text-gray-500">
               {confirmDeleteGroup.photos.length} photo{confirmDeleteGroup.photos.length > 1 ? 's' : ''} seront supprimées définitivement. Cette action est irréversible.
             </p>
+            {groupActionError && (
+              <p className="mt-3 text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+                {groupActionError}
+              </p>
+            )}
           </div>
           <div className="flex gap-3 px-6 py-4 border-t border-white/10">
-            <button onClick={() => setConfirmDeleteGroup(null)}
+            <button onClick={() => { setConfirmDeleteGroup(null); setGroupActionError(null); }}
               className="flex-1 px-4 py-2.5 rounded-xl text-sm border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
             >
               Annuler

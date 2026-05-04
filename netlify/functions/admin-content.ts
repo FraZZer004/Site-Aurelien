@@ -56,7 +56,11 @@ export default async function handler(req: Request): Promise<Response> {
 
     // ----- DELETE (soft-delete by id or ids[]) --------------------------------
     if (req.method === 'DELETE') {
-      const body = (await req.json()) as { id?: string; ids?: string[] };
+      let body: { id?: string; ids?: string[] } = {};
+      const rawText = await req.text();
+      if (rawText) {
+        try { body = JSON.parse(rawText); } catch { return errorResponse('Corps JSON invalide', 400); }
+      }
       const ids: string[] = body.ids ?? (body.id ? [body.id] : []);
       if (!ids.length) return errorResponse('id(s) manquant(s)', 400);
 
