@@ -113,72 +113,67 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleSetAsCover = async (newCover: Photo, currentPreview: Photo | undefined) => {
+  const handleSetAsCover = async (newCover: Photo) => {
     setCoverActionLoadingId(newCover.id);
     try {
       const additionIds = new Set(additions.map((a) => a.id));
-      const oldIsDynamic = currentPreview ? additionIds.has(currentPreview.id) : false;
-      const newIsDynamic = additionIds.has(newCover.id);
+      const sectionId = (newCover as Record<string, unknown>)[cat.sectionKey] as string;
 
-      if (newIsDynamic && (!currentPreview || oldIsDynamic)) {
-        // Both dynamic (or no old cover) — atomic single read-modify-write, no race condition
+      // Find ALL photos with isPreview:true in this section except the new cover
+      const oldCovers = photos.filter(
+        (p) => p.isPreview && (p as Record<string, unknown>)[cat.sectionKey] === sectionId && p.id !== newCover.id
+      );
+      const dynamicOldCovers = oldCovers.filter((p) => additionIds.has(p.id));
+      const staticOldCovers = oldCovers.filter((p) => !additionIds.has(p.id));
+
+      // Static old covers: create gallery copy then soft-delete (can't PATCH static data)
+      for (const old of staticOldCovers) {
+        const copy = { ...old, id: `gallery-${old.id}-${Date.now()}`, isPreview: false };
+        const r1 = await fetch('/api/admin/content', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify([copy]),
+        });
+        if (!r1.ok) throw new Error("Impossible de créer la copie galerie de l'ancienne couverture");
+        const r2 = await fetch('/api/admin/content', {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: [old.id] }),
+        });
+        if (!r2.ok) throw new Error("Impossible de cacher l'ancienne couverture statique");
+      }
+
+      if (additionIds.has(newCover.id)) {
+        // New cover is dynamic — atomic single write: demote all dynamic old covers + promote new
         const r = await fetch('/api/admin/content', {
           method: 'PATCH',
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ setCover: { newId: newCover.id, oldId: currentPreview?.id } }),
+          body: JSON.stringify({ setCover: { newId: newCover.id, oldIds: dynamicOldCovers.map((p) => p.id) } }),
         });
         if (!r.ok) throw new Error('Impossible de changer la couverture');
       } else {
-        // At least one photo is static — sequential operations, each targeting a single photo
-        if (currentPreview) {
-          if (oldIsDynamic) {
-            const r = await fetch('/api/admin/content', {
-              method: 'PATCH',
-              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify({ ids: [currentPreview.id], patch: { isPreview: false } }),
-            });
-            if (!r.ok) throw new Error("Impossible de déclasser l'ancienne couverture");
-          } else {
-            // Static old cover → gallery copy + soft-delete
-            const galleryCopy = { ...currentPreview, id: `gallery-${currentPreview.id}-${Date.now()}`, isPreview: false };
-            const r1 = await fetch('/api/admin/content', {
-              method: 'POST',
-              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify([galleryCopy]),
-            });
-            if (!r1.ok) throw new Error("Impossible de créer la copie galerie de l'ancienne couverture");
-            const r2 = await fetch('/api/admin/content', {
-              method: 'DELETE',
-              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify({ ids: [currentPreview.id] }),
-            });
-            if (!r2.ok) throw new Error("Impossible de cacher l'ancienne couverture statique");
-          }
-        }
-
-        if (newIsDynamic) {
+        // New cover is static: demote dynamic old covers first, then create a dynamic cover copy
+        if (dynamicOldCovers.length > 0) {
           const r = await fetch('/api/admin/content', {
             method: 'PATCH',
             headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ids: [newCover.id], patch: { isPreview: true } }),
+            body: JSON.stringify({ ids: dynamicOldCovers.map((p) => p.id), patch: { isPreview: false } }),
           });
-          if (!r.ok) throw new Error('Impossible de définir la nouvelle couverture');
-        } else {
-          // Static new cover → dynamic cover copy + soft-delete original
-          const newEntry = { ...newCover, id: `cover-${newCover.id}-${Date.now()}`, isPreview: true };
-          const r1 = await fetch('/api/admin/content', {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify([newEntry]),
-          });
-          if (!r1.ok) throw new Error('Impossible de créer la nouvelle couverture');
-          const r2 = await fetch('/api/admin/content', {
-            method: 'DELETE',
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ids: [newCover.id] }),
-          });
-          if (!r2.ok) throw new Error("Impossible de supprimer l'original de la galerie");
+          if (!r.ok) throw new Error("Impossible de déclasser l'ancienne couverture");
         }
+        const newEntry = { ...newCover, id: `cover-${newCover.id}-${Date.now()}`, isPreview: true };
+        const r1 = await fetch('/api/admin/content', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify([newEntry]),
+        });
+        if (!r1.ok) throw new Error('Impossible de créer la nouvelle couverture');
+        const r2 = await fetch('/api/admin/content', {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: [newCover.id] }),
+        });
+        if (!r2.ok) throw new Error("Impossible de supprimer l'original de la galerie");
       }
 
       refresh();
@@ -241,6 +236,9 @@ const AdminDashboard: React.FC = () => {
         const section = map.get(sectionId)!;
 
         if (p.isPreview) {
+          // If a cover already exists (corrupted data with multiple isPreview:true),
+          // push the previous one to gallery so it isn't silently lost
+          if (section.preview) section.photos.push(section.preview);
           section.preview = p;
           section.label = p.title || p.alt || sectionId;
         } else {
@@ -473,7 +471,7 @@ const AdminDashboard: React.FC = () => {
                             <AdminPhotoList
                               photos={group.photos}
                               onDeleted={handleDeleted}
-                              onSetAsCover={(p) => handleSetAsCover(p, section.preview)}
+                              onSetAsCover={(p) => handleSetAsCover(p)}
                               coverActionLoadingId={coverActionLoadingId}
                             />
                           </div>
@@ -482,7 +480,7 @@ const AdminDashboard: React.FC = () => {
                         <AdminPhotoList
                           photos={section.photos}
                           onDeleted={handleDeleted}
-                          onSetAsCover={(p) => handleSetAsCover(p, section.preview)}
+                          onSetAsCover={(p) => handleSetAsCover(p)}
                           coverActionLoadingId={coverActionLoadingId}
                         />
                       )}

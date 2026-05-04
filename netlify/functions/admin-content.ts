@@ -48,13 +48,14 @@ export default async function handler(req: Request): Promise<Response> {
         setCover?: { newId: string; oldId?: string };
       };
 
-      // Atomic cover swap — single read-modify-write to avoid race conditions
+      // Atomic cover swap — single read-modify-write, demotes ALL oldIds at once
       if (body.setCover) {
-        const { newId, oldId } = body.setCover;
+        const { newId, oldIds = [] } = body.setCover as { newId: string; oldIds?: string[] };
+        const demoteSet = new Set<string>(oldIds);
         const additions = await getJSON<Array<Record<string, unknown>>>(store, 'additions', []);
         const updated = additions.map((p) => {
           if (p.id === newId) return { ...p, isPreview: true };
-          if (oldId && p.id === oldId) return { ...p, isPreview: false };
+          if (demoteSet.has(p.id as string)) return { ...p, isPreview: false };
           return p;
         });
         await setJSON(store, 'additions', updated);
