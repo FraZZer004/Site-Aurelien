@@ -128,13 +128,20 @@ const AdminDashboard: React.FC = () => {
           });
           if (!r.ok) throw new Error('Impossible de déclasser l\'ancienne couverture');
         } else {
-          // Static cover → soft-delete so it leaves the gallery
-          const r = await fetch('/api/admin/content', {
+          // Static cover → add a gallery copy (no isPreview), then soft-delete original
+          const galleryCopy = { ...currentPreview, id: `gallery-${currentPreview.id}-${Date.now()}`, isPreview: false };
+          const r1 = await fetch('/api/admin/content', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify([galleryCopy]),
+          });
+          if (!r1.ok) throw new Error('Impossible de créer la copie galerie de l\'ancienne couverture');
+          const r2 = await fetch('/api/admin/content', {
             method: 'DELETE',
             headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify({ ids: [currentPreview.id] }),
           });
-          if (!r.ok) throw new Error('Impossible de supprimer l\'ancienne couverture statique');
+          if (!r2.ok) throw new Error('Impossible de cacher l\'ancienne couverture statique');
         }
       }
 
