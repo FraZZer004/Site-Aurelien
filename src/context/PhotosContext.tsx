@@ -21,11 +21,13 @@ import type { Photo } from '../types';
 
 interface PhotosContextType {
   photos: Photo[];
+  additions: Photo[];
   refresh: () => void;
 }
 
 const PhotosContext = createContext<PhotosContextType>({
   photos: staticPhotos,
+  additions: [],
   refresh: () => {},
 });
 
@@ -58,8 +60,8 @@ export const PhotosProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   }, [additions, deletions]);
 
   const value = useMemo(
-    () => ({ photos: allPhotos, refresh: fetchContent }),
-    [allPhotos, fetchContent]
+    () => ({ photos: allPhotos, additions, refresh: fetchContent }),
+    [allPhotos, additions, fetchContent]
   );
 
   return <PhotosContext.Provider value={value}>{children}</PhotosContext.Provider>;
@@ -67,6 +69,9 @@ export const PhotosProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
 /** Returns the merged photo array — use this in all portfolio pages. */
 export const usePhotos = (): Photo[] => useContext(PhotosContext).photos;
+
+/** Returns the additions array — use this in admin to distinguish dynamic vs static photos. */
+export const useAdditions = (): Photo[] => useContext(PhotosContext).additions;
 
 /** Returns the refresh function — use this in admin after mutations. */
 export const useRefreshPhotos = (): (() => void) => useContext(PhotosContext).refresh;

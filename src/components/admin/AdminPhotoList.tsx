@@ -1,18 +1,20 @@
 /**
  * AdminPhotoList
- * Shows all photos for a given section with delete capability.
+ * Shows all photos for a given section with delete and set-as-cover capability.
  */
 import React, { useState } from 'react';
-import { Trash2, Loader2, AlertTriangle } from 'lucide-react';
+import { Trash2, Loader2, AlertTriangle, Star } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import type { Photo } from '../../types';
 
 interface Props {
   photos: Photo[];
   onDeleted: () => void;
+  onSetAsCover?: (photo: Photo) => void;
+  coverActionLoadingId?: string | null;
 }
 
-const AdminPhotoList: React.FC<Props> = ({ photos, onDeleted }) => {
+const AdminPhotoList: React.FC<Props> = ({ photos, onDeleted, onSetAsCover, coverActionLoadingId }) => {
   const { token } = useAdminAuth();
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [confirmId, setConfirmId] = useState<string | null>(null);
@@ -67,14 +69,30 @@ const AdminPhotoList: React.FC<Props> = ({ photos, onDeleted }) => {
             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
               {photo.isPreview && (
                 <span className="bg-yellow-400 text-black text-[10px] font-bold px-1.5 py-0.5 rounded">
-                  APERÇU
+                  COVER
                 </span>
               )}
             </div>
-            <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-              <p className="text-white text-xs line-clamp-1 mb-1">
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity space-y-1">
+              <p className="text-white text-xs line-clamp-1">
                 {photo.title || photo.alt}
               </p>
+
+              {/* Set as cover — only for non-preview photos when callback provided */}
+              {onSetAsCover && !photo.isPreview && (
+                <button
+                  onClick={() => onSetAsCover(photo)}
+                  disabled={coverActionLoadingId === photo.id}
+                  className="w-full bg-yellow-400/80 hover:bg-yellow-400 text-black text-xs rounded-lg py-1 flex items-center justify-center gap-1 disabled:opacity-50"
+                >
+                  {coverActionLoadingId === photo.id
+                    ? <Loader2 className="w-3 h-3 animate-spin" />
+                    : <Star className="w-3 h-3" />}
+                  Définir comme cover
+                </button>
+              )}
+
+              {/* Delete */}
               {confirmId === photo.id ? (
                 <div className="flex gap-1">
                   <button

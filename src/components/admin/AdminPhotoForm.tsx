@@ -5,11 +5,12 @@
  * - Shared fields: category, section, date, description, brand, color, keywords
  * - Per-photo: title (editable inline below each thumbnail)
  * - All photos are uploaded and saved in a single batch
+ * - Cover photo can be chosen by clicking any thumbnail before submit
  */
 import React, { useState, useRef, useCallback } from 'react';
-import { Upload, X, Loader2, Plus, Image as ImageIcon } from 'lucide-react';
+import { Upload, X, Loader2, Plus, Image as ImageIcon, Star } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { usePhotos } from '../../context/PhotosContext';
+import { usePhotos, useAdditions } from '../../context/PhotosContext';
 import type { Photo } from '../../types';
 
 const CATEGORIES = [
@@ -33,7 +34,7 @@ function slugify(str: string) {
   return str
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 }
@@ -79,6 +80,7 @@ interface Props {
 const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   const { token } = useAdminAuth();
   const allPhotos = usePhotos();
+  const additions = useAdditions();
 
   /* ── Category & section ── */
   const [categoryId, setCategoryId] = useState<CategoryId>('events');
@@ -88,7 +90,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   const [subEventId, setSubEventId] = useState('');
 
   /* ── Shared metadata ── */
-  const [sharedTitle, setSharedTitle] = useState(''); // groupe toutes les photos ensemble
+  const [sharedTitle, setSharedTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [brand, setBrand] = useState('');
@@ -98,6 +100,10 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   /* ── Files ── */
   const [entries, setEntries] = useState<FileEntry[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  /* ── Cover selection ── */
+  const [coverIndex, setCoverIndex] = useState(0);
+  const [replaceExistingCover, setReplaceExistingCover] = useState(false);
 
   /* ── Status ── */
   const [loading, setLoading] = useState(false);
@@ -125,6 +131,9 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
     );
   }, [allPhotos, categoryId, cat.sectionKey, isNewSection, sectionId]);
 
+  // Cover picker is active when: new section, existing section without cover, or user toggled replace
+  const coverPickerActive = isNewSection || !selectedSectionHasPreview || replaceExistingCover;
+
   /* ── File handling ── */
   const addFiles = useCallback((files: FileList | File[]) => {
     const images = Array.from(files).filter((f) => f.type.startsWith('image/'));
@@ -139,9 +148,13 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
 
   const removeEntry = (id: string) => {
     setEntries((prev) => {
+      const idx = prev.findIndex((e) => e.id === id);
+      const next = prev.filter((e) => e.id !== id);
+      // Keep coverIndex in bounds; if cover was removed reset to 0
+      setCoverIndex((ci) => (idx === ci ? 0 : Math.min(ci, Math.max(0, next.length - 1))));
       const entry = prev.find((e) => e.id === id);
       if (entry) URL.revokeObjectURL(entry.preview);
-      return prev.filter((e) => e.id !== id);
+      return next;
     });
   };
 
@@ -152,6 +165,11 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     addFiles(e.dataTransfer.files);
+  };
+
+  const resetCoverPicker = () => {
+    setCoverIndex(0);
+    setReplaceExistingCover(false);
   };
 
   /* ── Upload one file ── */
@@ -168,6 +186,25 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
     }
     const { url } = await res.json() as { url: string };
     return url;
+  };
+
+  /* ── Demote old cover (PATCH if dynamic, soft-delete if static) ── */
+  const demoteOldCover = async (oldCoverId: string) => {
+    const isDynamic = additions.some((a) => a.id === oldCoverId);
+    if (isDynamic) {
+      await fetch('/api/admin/content', {
+        method: 'PATCH',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: [oldCoverId], patch: { isPreview: false } }),
+      });
+    } else {
+      const raw = await fetch('/api/admin/content', {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: [oldCoverId] }),
+      });
+      if (!raw.ok) throw new Error('Impossible de remplacer l\'ancienne couverture');
+    }
   };
 
   /* ── Submit ── */
@@ -189,10 +226,8 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         setProgress(`Upload ${i + 1} / ${entries.length} — ${entry.file.name}`);
         const src = await uploadOne(entry);
 
-        // Photo 0 becomes the cover when creating a new section OR when the existing
-        // section is missing its preview (so the event detail page doesn't break).
-        const isPreviewPhoto = i === 0 && (isNewSection || !selectedSectionHasPreview);
-        const resolvedTitle = isPreviewPhoto
+        const isPreviewPhoto = coverPickerActive && i === coverIndex;
+        const resolvedTitle = isPreviewPhoto && isNewSection
           ? newSectionName
           : (sharedTitle || (isNewSection ? newSectionName : (entry.title || nameWithoutExt(entry.file))));
 
@@ -219,21 +254,31 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         photos.push(photo);
       }
 
-      const payload = photos;
-
       setProgress('Sauvegarde…');
       const res = await fetch('/api/admin/content', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(photos),
       });
       if (!res.ok) {
         const body = await res.text().catch(() => '');
         throw new Error(`Sauvegarde échouée (${res.status}): ${body}`);
       }
 
+      // Demote the old cover if the user explicitly chose to replace it
+      if (replaceExistingCover && selectedSectionHasPreview) {
+        const oldCover = allPhotos.find(
+          (p) => p.categoryId === categoryId &&
+            (p as any)[cat.sectionKey] === finalSectionId &&
+            p.isPreview
+        );
+        if (oldCover) {
+          setProgress('Remplacement de la couverture…');
+          await demoteOldCover(oldCover.id);
+        }
+      }
+
       setSuccess(`${entries.length} photo${entries.length > 1 ? 's' : ''} ajoutée${entries.length > 1 ? 's' : ''} !`);
-      // Reset
       entries.forEach((e) => URL.revokeObjectURL(e.preview));
       setEntries([]);
       setSharedTitle('');
@@ -247,6 +292,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       setIsNewSection(false);
       setNewSectionName('');
       setProgress('');
+      resetCoverPicker();
       onSuccess();
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Erreur inconnue');
@@ -265,7 +311,13 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((c) => (
             <button key={c.id} type="button"
-              onClick={() => { setCategoryId(c.id); setSectionId(''); setIsNewSection(false); setNewSectionName(''); }}
+              onClick={() => {
+                setCategoryId(c.id);
+                setSectionId('');
+                setIsNewSection(false);
+                setNewSectionName('');
+                resetCoverPicker();
+              }}
               className={`px-4 py-2 rounded-full text-sm border transition-colors ${
                 categoryId === c.id
                   ? 'bg-yellow-400 text-black border-yellow-400'
@@ -282,12 +334,14 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       <div>
         <label className="block text-sm text-gray-400 mb-2">{cat.sectionLabel}</label>
         <div className="flex gap-2 mb-2">
-          <button type="button" onClick={() => setIsNewSection(false)}
+          <button type="button"
+            onClick={() => { setIsNewSection(false); resetCoverPicker(); }}
             className={`px-3 py-1.5 rounded-lg text-sm border transition-colors ${
               !isNewSection ? 'bg-white/10 border-white/20 text-white' : 'border-white/10 text-gray-400 hover:border-white/20'
             }`}
           >Existant</button>
-          <button type="button" onClick={() => setIsNewSection(true)}
+          <button type="button"
+            onClick={() => { setIsNewSection(true); resetCoverPicker(); }}
             className={`px-3 py-1.5 rounded-lg text-sm border transition-colors flex items-center gap-1 ${
               isNewSection ? 'bg-yellow-400/10 border-yellow-400/50 text-yellow-400' : 'border-white/10 text-gray-400 hover:border-white/20'
             }`}
@@ -302,7 +356,8 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400"
           />
         ) : (
-          <select value={sectionId} onChange={(e) => setSectionId(e.target.value)}
+          <select value={sectionId}
+            onChange={(e) => { setSectionId(e.target.value); resetCoverPicker(); }}
             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-400"
           >
             <option value="">— Sélectionner —</option>
@@ -319,20 +374,35 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
           />
         )}
 
+        {/* Feedback cover — new section */}
         {isNewSection && newSectionName && (
           <p className="mt-2 text-xs text-yellow-400/70">
-            La 1ère photo uploadée deviendra l'image de couverture de cette section.
+            Clique sur une photo pour choisir la couverture de cette section.
           </p>
         )}
 
+        {/* Feedback cover — missing preview */}
         {!selectedSectionHasPreview && !isNewSection && sectionId && (
           <p className="mt-2 text-xs text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg px-3 py-2">
-            Cette section n'a pas d'image de couverture. La page de l'événement affichera "Évènement introuvable" jusqu'à ce qu'une photo avec <code className="font-mono">isPreview</code> soit ajoutée. La 1ère photo que tu uploads ici deviendra la couverture.
+            Cette section n'a pas de photo de couverture — la 1ère photo uploadée deviendra la cover. Clique sur une photo pour en choisir une autre.
           </p>
+        )}
+
+        {/* Toggle — replace existing cover */}
+        {selectedSectionHasPreview && !isNewSection && sectionId && (
+          <label className="mt-2 flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={replaceExistingCover}
+              onChange={(e) => { setReplaceExistingCover(e.target.checked); setCoverIndex(0); }}
+              className="accent-yellow-400"
+            />
+            <span className="text-xs text-gray-400">Remplacer la photo de couverture actuelle</span>
+          </label>
         )}
       </div>
 
-      {/* ── Titre du sujet (groupe toutes les photos ensemble) ── */}
+      {/* ── Titre du sujet ── */}
       <div>
         <label className="block text-sm text-gray-400 mb-1">
           Titre du sujet
@@ -376,38 +446,60 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
           />
         </div>
 
+        {/* Cover picker hint */}
+        {entries.length > 0 && coverPickerActive && (
+          <p className="mt-2 text-xs text-yellow-400/60 flex items-center gap-1">
+            <Star className="w-3 h-3" />
+            Clique sur une photo pour la définir comme couverture
+          </p>
+        )}
+
         {/* Preview grid */}
         {entries.length > 0 && (
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {entries.map((entry, idx) => {
-              const willBeCover = idx === 0 && (isNewSection || !selectedSectionHasPreview);
+              const isCover = coverPickerActive && idx === coverIndex;
               return (
-              <div key={entry.id} className="relative group">
-                <div className={`aspect-square rounded-xl overflow-hidden bg-white/5 ${willBeCover ? 'ring-2 ring-yellow-400' : ''}`}>
-                  <img src={entry.preview} alt={entry.title} className="w-full h-full object-cover" />
-                  {willBeCover && (
-                    <span className="absolute top-1.5 left-1.5 bg-yellow-400 text-black text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">
-                      Cover
-                    </span>
-                  )}
+                <div key={entry.id} className="relative">
+                  <div
+                    onClick={() => coverPickerActive && setCoverIndex(idx)}
+                    className={`aspect-square rounded-xl overflow-hidden bg-white/5 relative ${
+                      coverPickerActive ? 'cursor-pointer' : ''
+                    } ${isCover ? 'ring-2 ring-yellow-400' : 'ring-1 ring-white/10'}`}
+                  >
+                    <img src={entry.preview} alt={entry.title} className="w-full h-full object-cover" />
+                    {isCover && (
+                      <div className="absolute inset-0 bg-yellow-400/10 flex items-start justify-start p-1.5">
+                        <span className="bg-yellow-400 text-black text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide flex items-center gap-0.5">
+                          <Star className="w-2 h-2" /> Cover
+                        </span>
+                      </div>
+                    )}
+                    {coverPickerActive && !isCover && (
+                      <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+                        <span className="bg-white/20 text-white text-[10px] px-2 py-1 rounded">
+                          Définir cover
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Remove button */}
+                  <button
+                    type="button"
+                    onClick={() => removeEntry(entry.id)}
+                    className="absolute top-1.5 right-1.5 bg-black/70 hover:bg-red-500 rounded-full p-1 transition-colors z-10"
+                  >
+                    <X className="w-3 h-3 text-white" />
+                  </button>
+                  {/* Per-photo title */}
+                  <input
+                    type="text"
+                    value={entry.title}
+                    onChange={(e) => updateTitle(entry.id, e.target.value)}
+                    placeholder="Titre"
+                    className="mt-1.5 w-full bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-white placeholder-gray-600 text-xs focus:outline-none focus:border-yellow-400"
+                  />
                 </div>
-                {/* Remove button */}
-                <button
-                  type="button"
-                  onClick={() => removeEntry(entry.id)}
-                  className="absolute top-1.5 right-1.5 bg-black/70 hover:bg-red-500 rounded-full p-1 transition-colors"
-                >
-                  <X className="w-3 h-3 text-white" />
-                </button>
-                {/* Per-photo title */}
-                <input
-                  type="text"
-                  value={entry.title}
-                  onChange={(e) => updateTitle(entry.id, e.target.value)}
-                  placeholder="Titre"
-                  className="mt-1.5 w-full bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-white placeholder-gray-600 text-xs focus:outline-none focus:border-yellow-400"
-                />
-              </div>
               );
             })}
           </div>

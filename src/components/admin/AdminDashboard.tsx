@@ -5,7 +5,7 @@
 import React, { useState, useCallback } from 'react';
 import { LogOut, Plus, ChevronDown, ChevronRight, RefreshCw, Pencil, Trash2, X, Loader2 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { usePhotos, useRefreshPhotos } from '../../context/PhotosContext';
+import { usePhotos, useAdditions, useRefreshPhotos } from '../../context/PhotosContext';
 import AdminPhotoList from './AdminPhotoList';
 import AdminPhotoForm from './AdminPhotoForm';
 import type { Photo } from '../../types';
@@ -52,6 +52,7 @@ interface EditForm {
 const AdminDashboard: React.FC = () => {
   const { logout, token } = useAdminAuth();
   const photos = usePhotos();
+  const additions = useAdditions();
   const refresh = useRefreshPhotos();
 
   const [activeCat, setActiveCat] = useState<CategoryId>('events');
@@ -65,6 +66,8 @@ const AdminDashboard: React.FC = () => {
   const [confirmDeleteGroup, setConfirmDeleteGroup] = useState<GroupRef | null>(null);
   const [groupActionLoading, setGroupActionLoading] = useState(false);
   const [groupActionError, setGroupActionError] = useState<string | null>(null);
+  // Cover change
+  const [coverActionLoadingId, setCoverActionLoadingId] = useState<string | null>(null);
 
   const openEdit = (group: GroupRef) => {
     const first = group.photos[0];
@@ -107,6 +110,64 @@ const AdminDashboard: React.FC = () => {
       alert(err instanceof Error ? err.message : 'Erreur inconnue');
     } finally {
       setGroupActionLoading(false);
+    }
+  };
+
+  const handleSetAsCover = async (newCover: Photo, currentPreview: Photo | undefined) => {
+    setCoverActionLoadingId(newCover.id);
+    try {
+      const additionIds = new Set(additions.map((a) => a.id));
+
+      // Demote old cover if one exists
+      if (currentPreview) {
+        if (additionIds.has(currentPreview.id)) {
+          const r = await fetch('/api/admin/content', {
+            method: 'PATCH',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ids: [currentPreview.id], patch: { isPreview: false } }),
+          });
+          if (!r.ok) throw new Error('Impossible de déclasser l\'ancienne couverture');
+        } else {
+          // Static cover → soft-delete so it leaves the gallery
+          const r = await fetch('/api/admin/content', {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ids: [currentPreview.id] }),
+          });
+          if (!r.ok) throw new Error('Impossible de supprimer l\'ancienne couverture statique');
+        }
+      }
+
+      // Promote new cover
+      if (additionIds.has(newCover.id)) {
+        const r = await fetch('/api/admin/content', {
+          method: 'PATCH',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: [newCover.id], patch: { isPreview: true } }),
+        });
+        if (!r.ok) throw new Error('Impossible de définir la nouvelle couverture');
+      } else {
+        // Static gallery photo → create a dynamic copy as cover, soft-delete original
+        const newEntry = { ...newCover, id: `cover-${newCover.id}-${Date.now()}`, isPreview: true };
+        const r1 = await fetch('/api/admin/content', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify([newEntry]),
+        });
+        if (!r1.ok) throw new Error('Impossible de créer la nouvelle couverture');
+        const r2 = await fetch('/api/admin/content', {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: [newCover.id] }),
+        });
+        if (!r2.ok) throw new Error('Impossible de supprimer l\'original de la galerie');
+      }
+
+      refresh();
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Erreur lors du changement de couverture');
+    } finally {
+      setCoverActionLoadingId(null);
     }
   };
 
@@ -391,15 +452,25 @@ const AdminDashboard: React.FC = () => {
                               </div>
                               <div className="h-px flex-1 bg-white/10" />
                             </div>
-                            <AdminPhotoList photos={group.photos} onDeleted={handleDeleted} />
+                            <AdminPhotoList
+                              photos={group.photos}
+                              onDeleted={handleDeleted}
+                              onSetAsCover={(p) => handleSetAsCover(p, section.preview)}
+                              coverActionLoadingId={coverActionLoadingId}
+                            />
                           </div>
                         ))
                       ) : (
-                        <AdminPhotoList photos={section.photos} onDeleted={handleDeleted} />
+                        <AdminPhotoList
+                          photos={section.photos}
+                          onDeleted={handleDeleted}
+                          onSetAsCover={(p) => handleSetAsCover(p, section.preview)}
+                          coverActionLoadingId={coverActionLoadingId}
+                        />
                       )}
                       {section.preview && (
                         <div className="pt-4 border-t border-white/10">
-                          <p className="text-xs text-gray-600 mb-2">Photo d'aperçu (preview)</p>
+                          <p className="text-xs text-gray-600 mb-2">Photo de couverture actuelle</p>
                           <AdminPhotoList photos={[section.preview]} onDeleted={handleDeleted} />
                         </div>
                       )}
