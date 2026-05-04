@@ -118,6 +118,13 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
     return Array.from(map.entries()).map(([id, label]) => ({ id, label }));
   }, [allPhotos, categoryId, cat.sectionKey]);
 
+  const selectedSectionHasPreview = React.useMemo(() => {
+    if (isNewSection || !sectionId) return true;
+    return allPhotos.some(
+      (p) => p.categoryId === categoryId && (p as any)[cat.sectionKey] === sectionId && p.isPreview
+    );
+  }, [allPhotos, categoryId, cat.sectionKey, isNewSection, sectionId]);
+
   /* ── File handling ── */
   const addFiles = useCallback((files: FileList | File[]) => {
     const images = Array.from(files).filter((f) => f.type.startsWith('image/'));
@@ -182,11 +189,12 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         setProgress(`Upload ${i + 1} / ${entries.length} — ${entry.file.name}`);
         const src = await uploadOne(entry);
 
-        // Shared title groups all photos under the same block in the gallery detail page.
-        // Falls back to per-photo title (filename) if no shared title is set.
-        const resolvedTitle = isNewSection && i === 0
+        // Photo 0 becomes the cover when creating a new section OR when the existing
+        // section is missing its preview (so the event detail page doesn't break).
+        const isPreviewPhoto = i === 0 && (isNewSection || !selectedSectionHasPreview);
+        const resolvedTitle = isPreviewPhoto
           ? newSectionName
-          : (sharedTitle || entry.title || nameWithoutExt(entry.file));
+          : (sharedTitle || (isNewSection ? newSectionName : (entry.title || nameWithoutExt(entry.file))));
 
         const photo: Partial<Photo> & Record<string, unknown> = {
           id: `${categoryId}-${finalSectionId}-${Date.now()}-${i}`,
@@ -194,7 +202,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
           src,
           alt: resolvedTitle,
           title: resolvedTitle,
-          ...(isNewSection && i === 0 ? { isPreview: true } : {}),
+          ...(isPreviewPhoto ? { isPreview: true } : {}),
           date: date || new Date().toLocaleDateString('fr-FR'),
           description: description || '',
           brand: brand || undefined,
@@ -205,7 +213,8 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         };
         photo[cat.sectionKey] = finalSectionId;
         if (categoryId === 'events' && subEventId) {
-          photo.subEventId = slugify(subEventId);
+          const sluggedSub = slugify(subEventId);
+          if (sluggedSub) photo.subEventId = sluggedSub;
         }
         photos.push(photo);
       }
@@ -309,6 +318,18 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
             className="mt-2 w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-yellow-400 text-sm"
           />
         )}
+
+        {isNewSection && newSectionName && (
+          <p className="mt-2 text-xs text-yellow-400/70">
+            La 1ère photo uploadée deviendra l'image de couverture de cette section.
+          </p>
+        )}
+
+        {!selectedSectionHasPreview && !isNewSection && sectionId && (
+          <p className="mt-2 text-xs text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg px-3 py-2">
+            Cette section n'a pas d'image de couverture. La page de l'événement affichera "Évènement introuvable" jusqu'à ce qu'une photo avec <code className="font-mono">isPreview</code> soit ajoutée. La 1ère photo que tu uploads ici deviendra la couverture.
+          </p>
+        )}
       </div>
 
       {/* ── Titre du sujet (groupe toutes les photos ensemble) ── */}
@@ -358,10 +379,17 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
         {/* Preview grid */}
         {entries.length > 0 && (
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {entries.map((entry) => (
+            {entries.map((entry, idx) => {
+              const willBeCover = idx === 0 && (isNewSection || !selectedSectionHasPreview);
+              return (
               <div key={entry.id} className="relative group">
-                <div className="aspect-square rounded-xl overflow-hidden bg-white/5">
+                <div className={`aspect-square rounded-xl overflow-hidden bg-white/5 ${willBeCover ? 'ring-2 ring-yellow-400' : ''}`}>
                   <img src={entry.preview} alt={entry.title} className="w-full h-full object-cover" />
+                  {willBeCover && (
+                    <span className="absolute top-1.5 left-1.5 bg-yellow-400 text-black text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">
+                      Cover
+                    </span>
+                  )}
                 </div>
                 {/* Remove button */}
                 <button
@@ -380,7 +408,8 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
                   className="mt-1.5 w-full bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-white placeholder-gray-600 text-xs focus:outline-none focus:border-yellow-400"
                 />
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
