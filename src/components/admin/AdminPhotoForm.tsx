@@ -78,7 +78,7 @@ interface Props {
 }
 
 const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
-  const { token } = useAdminAuth();
+  const { token, logout } = useAdminAuth();
   const allPhotos = usePhotos();
   const additions = useAdditions();
 
@@ -110,6 +110,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
   const [progress, setProgress] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [sessionExpired, setSessionExpired] = useState(false);
 
   const cat = CATEGORIES.find((c) => c.id === categoryId)!;
 
@@ -181,6 +182,10 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       body: JSON.stringify({ filename: entry.file.name, contentType: 'image/jpeg', data: base64 }),
     });
     if (!res.ok) {
+      if (res.status === 401) {
+        setSessionExpired(true);
+        throw new Error('SESSION_EXPIRED');
+      }
       const body = await res.text().catch(() => '');
       throw new Error(`Upload échoué (${res.status}): ${body}`);
     }
@@ -212,6 +217,7 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
     e.preventDefault();
     setError('');
     setSuccess('');
+    setSessionExpired(false);
 
     const finalSectionId = isNewSection ? slugify(newSectionName) : sectionId;
     if (!finalSectionId) { setError('Sélectionne ou crée une section.'); return; }
@@ -295,7 +301,8 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
       resetCoverPicker();
       onSuccess();
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Erreur inconnue');
+      const msg = err instanceof Error ? err.message : 'Erreur inconnue';
+      if (msg !== 'SESSION_EXPIRED') setError(msg);
     } finally {
       setLoading(false);
       setProgress('');
@@ -564,7 +571,21 @@ const AdminPhotoForm: React.FC<Props> = ({ onSuccess }) => {
           <Loader2 className="w-3 h-3 animate-spin" /> {progress}
         </p>
       )}
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {sessionExpired && (
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 flex items-center justify-between gap-4">
+          <p className="text-red-400 text-sm">
+            Session expirée — reconnectez-vous pour continuer.
+          </p>
+          <button
+            type="button"
+            onClick={logout}
+            className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs bg-red-500 hover:bg-red-400 text-white transition-colors"
+          >
+            Se reconnecter
+          </button>
+        </div>
+      )}
+      {!sessionExpired && error && <p className="text-red-400 text-sm">{error}</p>}
       {success && <p className="text-green-400 text-sm">{success}</p>}
 
       <button
